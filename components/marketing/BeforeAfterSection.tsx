@@ -1,148 +1,81 @@
 "use client";
 
 import React from "react";
-import {
-  PhoneCall,
-  Clock,
-  HelpCircle,
-  FileQuestion,
-  MessageCircleWarning,
-  Search,
-  BookOpen,
-  Send,
-  Zap,
-  CheckCircle2,
-  TrendingUp,
-  ArrowRight,
-  XCircle
-} from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight, Sparkles, CheckCircle2, XCircle } from "lucide-react";
 
 export const BeforeAfterSection: React.FC = () => {
-  const beforeSteps = [
-    { title: "Offline Discovery", desc: "Customer sees factory board or phone number from a colleague", icon: PhoneCall },
-    { title: "Manual Phone Enquiry", desc: "Calls during office hours only; salesperson might be busy or away", icon: Clock },
-    { title: "Scattered Catalogues", desc: "Sends outdated PDF or mobile photos over personal WhatsApp", icon: HelpCircle },
-    { title: "Slow Quotation Process", desc: "Manual Excel costing calculations taking 3 to 5 business days", icon: FileQuestion },
-    { title: "No Visibility", desc: "Buyer calls repeatedly asking 'Where is my order?' during production", icon: MessageCircleWarning }
-  ];
-
-  const afterSteps = [
-    { title: "Instant Digital Search", desc: "Buyer finds products on Google, QR codes, or direct link 24/7", icon: Search },
-    { title: "Live Technical Specs", desc: "Exact dimensions, tolerances, CAD drawings & test reports online", icon: BookOpen },
-    { title: "Structured Online RFQ", desc: "Submits exact quantity, material grade & custom specs in 2 minutes", icon: Send },
-    { title: "Automated Quotation", desc: "Sales team generates branded quote with digital acceptance link", icon: Zap },
-    { title: "Customer Portal & Tracking", desc: "Buyer logs in to track live production stage, invoices & dispatch", icon: CheckCircle2 }
-  ];
-
   return (
-    <section className="py-20 bg-stone-50 border-b border-stone-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-xs font-bold uppercase tracking-widest text-[#d4560a]">
-            The Business Impact
-          </span>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-stone-900 tracking-tight mt-1">
-            Before vs. After Digital Transformation
-          </h2>
-          <p className="text-sm text-stone-600 mt-2 leading-relaxed">
-            See the contrast between traditional offline friction and the modern digital manufacturing experience that closes deals faster and retains customers.
-          </p>
-        </div>
+    <section id="why" className="bg-[#f5f0e7] px-5 py-24 md:px-10 md:py-32 lg:px-14">
+      <div className="mx-auto max-w-[1440px]">
+        <div className="grid gap-14 lg:grid-cols-[.72fr_1.28fr] lg:gap-24">
+          <div>
+            <span className="eyebrow text-[#bb5b2c]">The shift / 02</span>
+            <h2 className="mt-5 max-w-md font-display text-[clamp(3rem,6vw,6.2rem)] leading-[.9] tracking-[-.04em] text-[#20272b]">
+              The machine is <em className="text-[#bb5b2c]">excellent.</em>
+              <br />
+              The market should know.
+            </h2>
+            <p className="mt-7 max-w-sm text-[15px] leading-7 text-[#5f6768]">
+              India’s precision CNC machine shops operate with world-class DMG Mori and Mazak 5-axis centers, but rely on offline phone calls and WhatsApp threads. INDUSTRIA turns that invisible confidence into a clear, searchable, 24/7 procurement experience.
+            </p>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
-          {/* The Old Way (Offline) */}
-          <div className="bg-white rounded-2xl p-6 sm:p-8 border border-stone-200 shadow-sm flex flex-col justify-between">
-            <div>
-              <div className="flex items-center justify-between pb-4 border-b border-stone-100 mb-6">
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-lg bg-rose-50 text-rose-600 flex items-center justify-center">
-                    <XCircle className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-stone-900 text-base">The Traditional Workshop</h3>
-                    <span className="text-[11px] text-stone-500">Offline, slow & phone-dependent</span>
-                  </div>
-                </div>
-                <span className="px-2.5 py-1 rounded-full bg-rose-100 text-rose-800 text-[11px] font-bold">
-                  HIGH FRICTION
-                </span>
+            <div className="mt-8 space-y-3 font-mono text-xs">
+              <div className="flex items-start gap-2.5 text-[#895232]">
+                <XCircle size={15} className="shrink-0 mt-0.5 text-[#bb5b2c]" />
+                <span>Before: 7-10 day quotation delay & untracked drawings</span>
               </div>
-
-              <div className="space-y-4">
-                {beforeSteps.map((step, idx) => {
-                  const Icon = step.icon;
-                  return (
-                    <div key={step.title} className="flex items-start gap-3.5 p-3 rounded-xl bg-stone-50/70 border border-stone-100">
-                      <div className="w-7 h-7 rounded-lg bg-stone-200 text-stone-600 flex items-center justify-center shrink-0 mt-0.5">
-                        <Icon className="w-4 h-4" />
-                      </div>
-                      <div>
-                        <div className="font-bold text-xs text-stone-800">
-                          {idx + 1}. {step.title}
-                        </div>
-                        <div className="text-[11px] text-stone-500 mt-0.5 leading-snug">
-                          {step.desc}
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
+              <div className="flex items-start gap-2.5 text-[#20272b]">
+                <CheckCircle2 size={15} className="shrink-0 mt-0.5 text-[#e46e2e]" />
+                <span>After: 2-Hour automated CAM estimate & live CMM logs</span>
               </div>
             </div>
 
-            <div className="mt-8 p-3 rounded-xl bg-rose-50 border border-rose-200 text-xs text-rose-800 flex items-center gap-2">
-              <span className="font-bold">Result:</span>
-              <span>Deals take 2-3 weeks to quote. High buyer drop-off. Zero customer data retained.</span>
-            </div>
+            <Link
+              href="/request-quote"
+              className="mt-8 inline-flex items-center gap-2 border-b border-[#bb5b2c] pb-2 text-sm font-semibold text-[#bb5b2c] transition-opacity hover:opacity-80"
+            >
+              See what a digital front door looks like <ArrowRight size={15} />
+            </Link>
           </div>
 
-          {/* The New Way (Digital Factory) */}
-          <div className="bg-stone-900 text-white rounded-2xl p-6 sm:p-8 border border-stone-800 shadow-xl flex flex-col justify-between relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-[#d4560a]/10 rounded-full blur-3xl pointer-events-none" />
-
-            <div>
-              <div className="flex items-center justify-between pb-4 border-b border-stone-800 mb-6">
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-lg bg-[#d4560a] text-white flex items-center justify-center">
-                    <CheckCircle2 className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-white text-base">The Digital Factory Experience</h3>
-                    <span className="text-[11px] text-stone-400">Streamlined, trackable & automated</span>
-                  </div>
-                </div>
-                <span className="px-2.5 py-1 rounded-full bg-emerald-950 text-emerald-400 border border-emerald-800 text-[11px] font-bold">
-                  HIGH CONVERSION
-                </span>
-              </div>
-
-              <div className="space-y-4 relative z-10">
-                {afterSteps.map((step, idx) => {
-                  const Icon = step.icon;
-                  return (
-                    <div key={step.title} className="flex items-start gap-3.5 p-3 rounded-xl bg-stone-800/80 border border-stone-700/80 hover:border-stone-600 transition-colors">
-                      <div className="w-7 h-7 rounded-lg bg-[#d4560a]/20 text-[#d4560a] flex items-center justify-center shrink-0 mt-0.5">
-                        <Icon className="w-4 h-4" />
-                      </div>
-                      <div>
-                        <div className="font-bold text-xs text-white">
-                          {idx + 1}. {step.title}
-                        </div>
-                        <div className="text-[11px] text-stone-400 mt-0.5 leading-snug">
-                          {step.desc}
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
+          <div className="relative min-h-[460px]">
+            {/* Top Left Image Card */}
+            <div className="absolute left-0 top-0 h-[68%] w-[82%] overflow-hidden bg-[#20272b]">
+              <Image
+                src="/industrial-process.jpg"
+                alt="5-Axis CNC machining cell and fabrication line"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover opacity-70"
+              />
+              <div className="absolute inset-0 bg-gradient-to-tr from-[#20272b]/70 to-transparent" />
+              <div className="absolute bottom-5 left-5 font-mono text-[10px] uppercase tracking-[.14em] text-[#ddd8cb]">
+                Before / Offline machine shop & WhatsApp drawings
               </div>
             </div>
 
-            <div className="mt-8 p-3 rounded-xl bg-emerald-950/80 border border-emerald-800/60 text-xs text-emerald-300 flex items-center gap-2">
-              <TrendingUp className="w-4 h-4 text-emerald-400 shrink-0" />
-              <span>
-                <strong>Result:</strong> 40% faster quotation turnaround. Higher repeat orders. Complete pipeline analytics.
-              </span>
+            {/* Bottom Right Overlapping Stat Card */}
+            <div className="absolute bottom-0 right-0 w-[72%] border border-[#d0c7b8] bg-[#e8e1d5] p-5 shadow-[10px_10px_0_#bb5b2c] md:p-7">
+              <div className="flex items-center justify-between border-b border-[#cfc4b4] pb-4 font-mono text-[10px] uppercase tracking-[.1em] text-[#697174]">
+                <span>After / Found by Tier-1 OEM Procurement</span>
+                <Sparkles size={14} className="text-[#bb5b2c]" />
+              </div>
+              <div className="mt-6 grid grid-cols-2 gap-4">
+                <div>
+                  <p className="font-display text-4xl text-[#bb5b2c]">3.4×</p>
+                  <p className="mt-1 text-xs text-[#687173]">qualified RFQ discovery</p>
+                </div>
+                <div>
+                  <p className="font-display text-4xl text-[#20272b]">−18h</p>
+                  <p className="mt-1 text-xs text-[#687173]">saved per quoting cycle</p>
+                </div>
+              </div>
+              <div className="mt-6 border-t border-[#cfc4b4] pt-4 grid grid-cols-2 gap-2 font-mono text-[10px] uppercase text-[#687173]">
+                <span>✓ Direct STEP/IGES CAD</span>
+                <span>✓ Zeiss CMM Traceability</span>
+              </div>
             </div>
           </div>
         </div>

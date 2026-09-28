@@ -10,7 +10,8 @@ import {
   Box,
   Truck,
   Headphones,
-  ChevronDown
+  CheckCircle2,
+  Workflow
 } from "lucide-react";
 
 export const ProcessTimelineSection: React.FC = () => {
@@ -20,86 +21,135 @@ export const ProcessTimelineSection: React.FC = () => {
     {
       stepNumber: "01",
       title: "Requirement Analysis",
-      subtitle: "Application study & technical review",
+      subtitle: "Application study & CAD feasibility",
       icon: FileText,
-      description: "Our application engineering team analyzes your operational duty cycle, required tolerances, chemical compatibility, and environmental stresses before drafting the manufacturing proposal.",
-      deliverables: ["Technical Feasibility Check", "Preliminary 2D / 3D Layout", "Material Grade Recommendation", "Target Budget Estimation"]
+      description:
+        "Our application engineering team analyzes operational duty cycles, required tolerances, chemical compatibility, and environmental stresses before drafting the manufacturing proposal.",
+      deliverables: [
+        "Technical Feasibility Check",
+        "Preliminary 2D / 3D Layout",
+        "Material Grade Recommendation",
+        "Target Budget Estimation"
+      ]
     },
     {
       stepNumber: "02",
       title: "Design & CAD Engineering",
       subtitle: "Finite element analysis & 3D models",
       icon: Compass,
-      description: "Using high-end 3D CAD modeling and finite element analysis (FEA), we stress-test structural members, optimize wall thickness for polymer and metal parts, and ensure zero interference in assemblies.",
-      deliverables: ["Approved General Arrangement Drawing", "Bill of Materials (BOM)", "Tooling & Die Design", "Stress & Load Simulation"]
+      description:
+        "Using 3D CAD modeling and finite element analysis (FEA), we stress-test structural members, optimize wall thickness for alloy parts, and ensure zero interference in complex assemblies.",
+      deliverables: [
+        "Approved General Arrangement Drawing",
+        "Bill of Materials (BOM)",
+        "Tooling & Die Design",
+        "Stress & Load Simulation"
+      ]
     },
     {
       stepNumber: "03",
       title: "Material Sourcing & Metallography",
       subtitle: "Certified raw materials with heat numbers",
       icon: Layers,
-      description: "All forgings, plates, virgin polymer resins, and silicon electrical steels are procured directly from certified primary mills. Spectro chemical analysis and ultrasonic testing verify structural integrity.",
-      deliverables: ["EN 10204 Type 3.1 Mill Test Certificates", "Spectro Chemical Composition Reports", "Mechanical Tensile & Hardness Test", "Raw Material Heat Traceability Tag"]
+      description:
+        "All forgings, round bars, and plates are procured directly from certified primary mills. Spectro chemical analysis and ultrasonic testing verify structural integrity before machining starts.",
+      deliverables: [
+        "EN 10204 Type 3.1 Mill Test Certificates",
+        "Spectro Chemical Composition Reports",
+        "Mechanical Tensile & Hardness Test",
+        "Raw Material Heat Traceability Tag"
+      ]
     },
     {
       stepNumber: "04",
-      title: "Precision Production & Machining",
-      subtitle: "CNC milling, laser cutting & welding",
+      title: "Precision 5-Axis CNC Machining",
+      subtitle: "High-speed milling, turning & grinding",
       icon: Wrench,
-      description: "Manufacturing on automated 5-axis CNC machining centers, automated robotic seam welders, and high-tonnage hydraulic presses according to calibrated standard operating procedures (SOP).",
-      deliverables: ["Job Card Route Sheet Signoffs", "First Piece Sample Validation", "In-Process Inspection Logs", "Vibration Stress Relieving Reports"]
+      description:
+        "Manufacturing on multi-axis DMG Mori and Mazak CNC machining centers according to calibrated standard operating procedures (SOP) with in-process probe validation.",
+      deliverables: [
+        "Job Card Route Sheet Signoffs",
+        "First Piece Sample Validation",
+        "In-Process Inspection Logs",
+        "Vibration Stress Relieving Reports"
+      ]
     },
     {
       stepNumber: "05",
-      title: "Quality Assurance & Hydro Testing",
-      subtitle: "Multi-stage QA inspection protocols",
+      title: "Quality Assurance & Metrology",
+      subtitle: "Zeiss CMM 3D scanning & proof tests",
       icon: CheckCircle,
-      description: "Components undergo rigorous quality checks on Zeiss Coordinate Measuring Machines (CMM), hydrostatic pressure testing benches, dynamic rotor balancing, and dielectric electrical tests.",
-      deliverables: ["Final Quality Inspection Report (QIR)", "Hydrostatic Test Chart (1.5x working pressure)", "Dynamic Balancing Certificate (ISO 1940)", "Dimension Verification Sheet"]
+      description:
+        "Components undergo quality checks on temperature-controlled Zeiss Coordinate Measuring Machines (CMM), hydrostatic pressure testing benches, and dynamic rotor balancing.",
+      deliverables: [
+        "Final Quality Inspection Report (QIR)",
+        "Zeiss 3D CMM Geometric Runout Chart",
+        "Hydrostatic Pressure Test Certificate",
+        "Material Traceability Dossier"
+      ]
     },
     {
       stepNumber: "06",
-      title: "Surface Finish & Packing",
-      subtitle: "Shot blasting, epoxy paint & seaworthy crating",
+      title: "Surface Treatment & Finishing",
+      subtitle: "Passivation, anodizing & coatings",
       icon: Box,
-      description: "Surface preparation via automated shot blasting (SA 2.5) followed by multi-coat polyurethane paint or hot-dip galvanizing. Moisture barrier VCI foil and heat-treated wooden crates prevent transport transit damage.",
-      deliverables: ["Coating Thickness (DFT) Test Certificate", "Seaworthy ISPM-15 Heat-Treated Crating", "Waterproof VCI Anti-Rust Wrapping", "Consignment Barcode Labeling"]
+      description:
+        "Controlled surface enhancements including chemical blackening, hard chrome plating, hard anodizing Type III, manganese phosphating, and electro-polishing for corrosion resistance.",
+      deliverables: [
+        "Coating Thickness Inspection (Elcometer)",
+        "Salt Spray Corrosion Test (ASTM B117)",
+        "Surface Roughness Profile Chart (Ra/Rz)",
+        "Adhesion Cross-Hatch Test Report"
+      ]
     },
     {
       stepNumber: "07",
-      title: "Dispatch & Freight Logistics",
-      subtitle: "Trackable transport carriers & container stuffing",
+      title: "Protective Packaging & Export Dispatch",
+      subtitle: "VCI corrosion prevention & crating",
       icon: Truck,
-      description: "Seamless handover to verified logistics partners with GPS tracked vehicles, crane loading, and complete dispatch documentation including e-Way bills and export shipping bills.",
-      deliverables: ["Consignment Tracking Number (LR)", "E-Way Bill & Tax Invoice", "Container Packing List", "Cargo Transit Insurance"]
+      description:
+        "Components are cleaned in automated ultrasonic wash stations, coated with volatile corrosion inhibitor (VCI) oil, and vacuum sealed inside ISPM 15 heat-treated seaworthy wooden crates.",
+      deliverables: [
+        "Barcoded Shipping Label & Packing Slip",
+        "Customs Export Clearance Documents",
+        "GPS Freight Consignment Tracking",
+        "Moisture Indicator Seal Confirmation"
+      ]
     },
     {
       stepNumber: "08",
-      title: "After-Sales & Warranty Support",
-      subtitle: "Installation guidance & spares supply",
+      title: "Lifecycle Support & Re-orders",
+      subtitle: "Installation guidance & spares inventory",
       icon: Headphones,
-      description: "Our dedicated service team assists with on-site commissioning, machine demo calibration, annual maintenance contracts (AMC), and guaranteed availability of OEM replacement parts.",
-      deliverables: ["12-Month Manufacturer Warranty", "Digital Maintenance Log on Portal", "Guaranteed Spares Dispatch within 48h", "Factory Engineer Support Hotline"]
+      description:
+        "Our engineering service team assists with assembly alignment, technical field support, and guaranteed batch-to-batch repeatability for annual production call-offs.",
+      deliverables: [
+        "12-Month Performance Guarantee",
+        "Digital Inspection Archive on Portal",
+        "Guaranteed Spares Dispatch within 48h",
+        "Senior Application Engineer Hotline"
+      ]
     }
   ];
 
   return (
-    <section className="py-20 bg-white border-b border-stone-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-24 bg-[#20272b] text-[#f5f0e7] border-b border-white/10 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-2xl mx-auto mb-14">
-          <span className="text-xs font-bold uppercase tracking-widest text-[#d4560a]">
-            Quality & Operations Standard
-          </span>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-stone-900 tracking-tight mt-1">
-            End-to-End Manufacturing Workflow
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded border border-[#e7a45c]/30 text-[#e7a45c] text-xs font-mono mb-4 bg-white/5">
+            <Workflow size={14} />
+            <span className="uppercase tracking-[.14em]">IATF 16949 & AS9100D Certified Workflow</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display tracking-tight text-[#f5f0e7]">
+            End-to-End Precision <em className="text-[#e7a45c]">Manufacturing Pipeline.</em>
           </h2>
-          <p className="text-sm text-stone-600 mt-2">
-            Click any step to inspect technical inspection deliverables and factory quality milestones.
+          <p className="text-sm text-[#aeb5b2] mt-3">
+            Select any production milestone to inspect quality verification deliverables and standard operating protocols.
           </p>
         </div>
 
-        {/* Step Selector Horizontal Pills */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-8">
+        {/* Step Selector 8-Step Grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2.5 mb-8">
           {steps.map((st, idx) => {
             const Icon = st.icon;
             const isSelected = activeStep === idx;
@@ -107,63 +157,67 @@ export const ProcessTimelineSection: React.FC = () => {
               <button
                 key={st.title}
                 onClick={() => setActiveStep(idx)}
-                className={`flex items-center gap-2 px-3.5 py-2.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all border shrink-0 ${
+                className={`flex flex-col items-start p-3 text-left transition-all border ${
                   isSelected
-                    ? "bg-stone-900 text-white border-stone-900 shadow-md"
-                    : "bg-stone-50 text-stone-700 border-stone-200 hover:bg-stone-100"
+                    ? "bg-[#293337] text-[#f5f0e7] border-[#e7a45c] shadow-lg"
+                    : "bg-[#171c1e] text-[#899492] border-white/10 hover:border-white/25 hover:text-[#f5f0e7]"
                 }`}
               >
-                <span className={`text-[10px] font-mono ${isSelected ? "text-amber-400" : "text-stone-400"}`}>
-                  {st.stepNumber}
+                <div className="flex items-center justify-between w-full mb-1.5 font-mono">
+                  <span
+                    className={`text-[11px] ${
+                      isSelected ? "text-[#e7a45c] font-bold" : "text-[#7e8989]"
+                    }`}
+                  >
+                    {st.stepNumber}
+                  </span>
+                  <Icon
+                    size={14}
+                    className={isSelected ? "text-[#e7a45c]" : "text-[#7e8989]"}
+                  />
+                </div>
+                <span className="text-[11px] font-medium leading-tight line-clamp-2">
+                  {st.title}
                 </span>
-                <Icon className={`w-3.5 h-3.5 ${isSelected ? "text-[#d4560a]" : "text-stone-500"}`} />
-                <span>{st.title}</span>
               </button>
             );
           })}
         </div>
 
         {/* Active Step Detailed Expanded Panel */}
-        <div className="bg-stone-50 rounded-2xl border border-stone-200 p-6 sm:p-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div className="bg-[#171c1e] border border-white/15 p-6 sm:p-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center shadow-2xl">
           <div className="lg:col-span-7 space-y-4">
-            <div className="flex items-center gap-3">
-              <span className="w-10 h-10 rounded-xl bg-orange-100 text-[#d4560a] flex items-center justify-center font-bold text-base">
+            <div className="flex items-center gap-3.5">
+              <span className="size-12 border border-[#e7a45c] text-[#e7a45c] flex items-center justify-center font-mono font-bold text-lg bg-[#20272b]">
                 {steps[activeStep].stepNumber}
               </span>
               <div>
-                <h3 className="text-xl font-bold text-stone-900">
+                <h3 className="text-xl sm:text-2xl font-display text-[#f5f0e7]">
                   {steps[activeStep].title}
                 </h3>
-                <span className="text-xs text-[#d4560a] font-semibold">
+                <span className="text-xs text-[#e7a45c] font-mono uppercase tracking-[.1em]">
                   {steps[activeStep].subtitle}
                 </span>
               </div>
             </div>
 
-            <p className="text-sm text-stone-600 leading-relaxed pt-2">
+            <p className="text-sm text-[#aeb5b2] leading-relaxed">
               {steps[activeStep].description}
             </p>
-
-            <div className="pt-2 flex items-center gap-4 text-xs text-stone-500">
-              <span>Standard Execution: <strong>Strict SOP Controlled</strong></span>
-              <span>•</span>
-              <span>Operator Level: <strong>Certified Engineers</strong></span>
-            </div>
           </div>
 
-          {/* Right Column: Deliverables Box */}
-          <div className="lg:col-span-5 bg-white rounded-xl p-5 border border-stone-200 shadow-sm space-y-3">
-            <span className="text-xs font-bold uppercase tracking-wider text-stone-400 block border-b border-stone-100 pb-2">
-              Verified Deliverables & Documents
+          <div className="lg:col-span-5 bg-[#20272b] p-5 border border-white/10 space-y-3">
+            <span className="eyebrow text-[#e7a45c] block mb-2">
+              Verified Deliverables & Records
             </span>
-            <ul className="space-y-2.5">
-              {steps[activeStep].deliverables.map((del) => (
-                <li key={del} className="flex items-center gap-2.5 text-xs text-stone-800">
-                  <CheckCircle className="w-4 h-4 text-emerald-600 shrink-0" />
-                  <span className="font-medium">{del}</span>
-                </li>
+            <div className="space-y-2.5">
+              {steps[activeStep].deliverables.map((d, i) => (
+                <div key={i} className="flex items-start gap-2.5 text-xs text-[#d2d1c9]">
+                  <CheckCircle2 size={14} className="text-[#e7a45c] shrink-0 mt-0.5" />
+                  <span>{d}</span>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
         </div>
       </div>

@@ -10,15 +10,12 @@ import {
   Search,
   ArrowRight,
   ChevronRight,
-  ShieldCheck,
-  CheckCircle2,
-  Cpu,
   Plane,
   Truck,
   Flame,
+  Cpu,
   Zap,
-  Bot,
-  Factory
+  Bot
 } from "lucide-react";
 
 export default function IndustriesDirectoryPage() {
@@ -103,48 +100,48 @@ export default function IndustriesDirectoryPage() {
   );
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#fafaf8]">
+    <div className="min-h-screen flex flex-col bg-[#20272b] text-[#f5f0e7]">
       <Navbar />
 
-      <main className="flex-1 py-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <main className="flex-1 pt-28 pb-20 relative overflow-hidden">
+        <div className="max-w-[1440px] mx-auto px-5 md:px-10 lg:px-14 relative z-10">
           {/* Breadcrumb */}
-          <div className="flex items-center gap-1.5 text-xs text-stone-500 mb-6">
-            <Link href="/" className="hover:text-stone-900">
+          <div className="flex items-center gap-2 text-xs text-[#aeb5b2] font-mono mb-8">
+            <Link href="/" className="hover:text-[#e7a45c] transition-colors">
               Home
             </Link>
-            <ChevronRight className="w-3.5 h-3.5" />
-            <span className="text-stone-900 font-semibold">Specialized Industry Applications</span>
+            <ChevronRight size={13} className="text-[#7e8989]" />
+            <span className="text-[#f5f0e7] font-semibold">Specialized Industry Applications</span>
           </div>
 
           {/* Directory Header */}
-          <div className="mb-10 max-w-3xl">
-            <div className="flex items-center gap-2 mb-1.5">
-              <span className="text-xs font-bold uppercase tracking-widest text-[#d4560a]">
-                Contract Precision Machining
-              </span>
-              <span className="px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 text-[10px] font-bold border border-emerald-200">
-                140+ CNC & Turning Centers
-              </span>
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between pb-6 border-b border-white/10 mb-10 gap-6">
+            <div className="max-w-3xl">
+              <div className="flex items-center gap-3 mb-2">
+                <span className="eyebrow text-[#e7a45c]">
+                  Contract Precision Machining Cells
+                </span>
+                <span className="px-2 py-0.5 bg-[#171c1e] text-[#e7a45c] font-mono text-[10px] font-bold border border-[#e7a45c]/30">
+                  140+ CNC & Turning Centers
+                </span>
+              </div>
+              <h1 className="text-4xl sm:text-5xl font-display tracking-tight text-[#f5f0e7]">
+                Specialized Machining Cells & <em className="text-[#e7a45c]">Applications.</em>
+              </h1>
+              <p className="text-xs sm:text-sm text-[#aeb5b2] mt-3 leading-relaxed max-w-2xl">
+                INDUSTRIA operates dedicated machining cells configured for high-tolerance OEM supply across aerospace, commercial vehicle transmissions, high-pressure energy piping, and robotics automation.
+              </p>
             </div>
-            <h1 className="text-3xl sm:text-4xl font-extrabold text-stone-900 tracking-tight">
-              Specialized Machining Cells & Industry Applications
-            </h1>
-            <p className="text-sm text-stone-600 mt-2 leading-relaxed">
-              INDUSTRIA operates dedicated machining cells configured for high-tolerance OEM supply across aerospace, commercial vehicle transmissions, high-pressure energy piping, and robotics automation.
-            </p>
-          </div>
 
-          {/* Search bar */}
-          <div className="bg-white p-4 rounded-xl border border-stone-200 mb-8 shadow-xs">
-            <div className="relative w-full">
-              <Search className="w-4 h-4 text-stone-400 absolute left-3 top-3" />
+            {/* Search bar */}
+            <div className="relative w-full sm:w-80 shrink-0">
+              <Search size={14} className="text-[#7e8989] absolute left-3 top-3.5" />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search applications, standards (e.g. AS9100D, DIN 5480, ASME B16.5, ISO 9409-1)..."
-                className="w-full bg-stone-50 pl-9 pr-4 py-2 border border-stone-300 rounded-lg text-xs text-stone-900 placeholder:text-stone-400 focus:outline-none focus:bg-white focus:border-[#d4560a]"
+                placeholder="Search standards (AS9100D, DIN 5480, ASME)..."
+                className="w-full bg-[#171c1e] pl-9 pr-4 py-2.5 border border-white/15 text-xs text-[#f5f0e7] placeholder:text-[#7e8989] focus:outline-none focus:border-[#e7a45c]"
               />
             </div>
           </div>
@@ -157,56 +154,56 @@ export default function IndustriesDirectoryPage() {
               return (
                 <div
                   key={sector.id}
-                  className="bg-white rounded-2xl border border-stone-200 overflow-hidden flex flex-col justify-between hover:shadow-xl hover:border-primary/40 transition-all duration-300 group"
+                  className="bg-[#171c1e] border border-white/10 hover:border-[#e7a45c]/50 overflow-hidden flex flex-col justify-between transition-all duration-300 group shadow-xl"
                 >
                   <div>
                     {/* Header Image */}
-                    <div className="relative h-48 w-full bg-stone-900 overflow-hidden">
+                    <div className="relative h-52 w-full bg-[#20272b] overflow-hidden border-b border-white/10">
                       <Image
                         src={sector.image}
                         alt={sector.title}
                         fill
                         sizes="(max-width: 768px) 100vw, 33vw"
-                        className="object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100"
+                        className="object-cover group-hover:scale-105 transition-transform duration-500 opacity-80 group-hover:opacity-100"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-950/20 to-transparent" />
-                      <span className="absolute top-3 right-3 text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-500 text-white shadow-xs">
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#171c1e] via-transparent to-transparent" />
+                      <span className="absolute top-3 right-3 text-[10px] font-mono font-bold px-2.5 py-1 bg-[#20272b]/90 text-[#e7a45c] border border-[#e7a45c]/30">
                         {sector.badge}
                       </span>
                       <div className="absolute bottom-3 left-3 text-white flex items-center gap-2">
-                        <div className="w-8 h-8 rounded-lg bg-orange-600/90 text-white flex items-center justify-center">
-                          <Icon className="w-4 h-4" />
+                        <div className="w-8 h-8 bg-[#e46e2e] text-[#f5f0e7] flex items-center justify-center">
+                          <Icon size={16} />
                         </div>
-                        <span className="text-xs font-bold tracking-tight">
+                        <span className="text-xs font-mono font-bold text-[#f5f0e7]">
                           {sector.tolerances}
                         </span>
                       </div>
                     </div>
 
                     {/* Content */}
-                    <div className="p-5 space-y-3">
-                      <h3 className="font-bold text-base text-stone-900 group-hover:text-primary transition-colors leading-snug">
+                    <div className="p-6 space-y-3">
+                      <h3 className="font-semibold text-lg text-[#f5f0e7] group-hover:text-[#e7a45c] transition-colors leading-snug">
                         {sector.title}
                       </h3>
 
-                      <p className="text-xs text-[#d4560a] font-semibold leading-relaxed">
+                      <p className="text-xs text-[#e7a45c] font-medium leading-relaxed">
                         {sector.tagline}
                       </p>
 
-                      <p className="text-xs text-stone-600 leading-relaxed">
+                      <p className="text-xs text-[#aeb5b2] leading-relaxed">
                         {sector.description}
                       </p>
 
                       {/* Sample Products */}
-                      <div className="pt-2">
-                        <span className="text-[10px] font-bold uppercase tracking-wider text-stone-400 block mb-1.5">
+                      <div className="pt-3 border-t border-white/5">
+                        <span className="text-[10px] font-mono uppercase tracking-[.12em] text-[#7e8989] block mb-2 font-bold">
                           Machined Components:
                         </span>
                         <div className="flex flex-wrap gap-1.5">
                           {sector.sampleProducts.map((p) => (
                             <span
                               key={p}
-                              className="text-[11px] bg-stone-100 text-stone-700 px-2 py-0.5 rounded font-medium border border-stone-200"
+                              className="text-[11px] font-mono bg-[#20272b] text-[#aeb5b2] px-2 py-0.5 border border-white/10"
                             >
                               {p}
                             </span>
@@ -217,18 +214,18 @@ export default function IndustriesDirectoryPage() {
                   </div>
 
                   {/* Actions */}
-                  <div className="p-5 pt-0 border-t border-stone-100 mt-4 flex items-center justify-between gap-3">
+                  <div className="p-6 pt-3 border-t border-white/10 flex items-center justify-between gap-3 bg-black/10">
                     <Link
                       href="/products"
-                      className="text-xs font-semibold text-stone-700 hover:text-stone-900 flex items-center gap-1"
+                      className="text-xs font-semibold text-[#aeb5b2] hover:text-[#e7a45c] flex items-center gap-1.5 transition-colors"
                     >
                       <span>Explore Parts</span>
-                      <ArrowRight className="w-3.5 h-3.5 text-stone-400" />
+                      <ArrowRight size={13} className="text-[#e7a45c]" />
                     </Link>
 
                     <Link
                       href="/request-quote"
-                      className="px-3.5 py-1.5 bg-[#d4560a] hover:bg-[#b84605] text-white text-xs font-semibold rounded-lg shadow-xs transition-colors"
+                      className="px-4 py-2 bg-[#e46e2e] hover:bg-[#bb5b2c] text-[#f5f0e7] text-xs font-semibold uppercase tracking-wider transition-colors shadow-sm"
                     >
                       Upload CAD RFQ
                     </Link>

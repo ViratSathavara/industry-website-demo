@@ -16,13 +16,10 @@ import {
   Heart,
   Bell,
   LogOut,
-  ChevronDown,
-  Factory,
   Shield,
   Menu,
   X,
-  ExternalLink,
-  Sparkles
+  ExternalLink
 } from "lucide-react";
 
 export const PortalLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -48,56 +45,56 @@ export const PortalLayout: React.FC<{ children: React.ReactNode }> = ({ children
   ];
 
   return (
-    <div className="min-h-screen flex flex-col md:flex-row bg-[#fafaf8]">
+    <div className="min-h-screen flex flex-col md:flex-row bg-[#f5f0e7] text-[#20272b]">
       {/* Mobile Top Header */}
-      <div className="md:hidden bg-stone-900 text-white p-3.5 flex items-center justify-between border-b border-stone-800">
+      <div className="md:hidden bg-[#171c1e] text-[#f5f0e7] p-3.5 flex items-center justify-between border-b border-white/10">
         <Link href="/" className="flex items-center gap-2">
-          <div className="w-7 h-7 rounded bg-[#d4560a] text-white flex items-center justify-center font-bold text-xs">
-            <Factory className="w-4 h-4" />
+          <div className="w-7 h-7 bg-[#e46e2e] text-[#f5f0e7] flex items-center justify-center font-bold font-mono text-xs">
+            IN
           </div>
-          <span className="font-bold text-sm tracking-tight">INDUSTRIA PORTAL</span>
+          <span className="font-semibold text-xs tracking-[.18em] uppercase">INDUSTRIA PORTAL</span>
         </Link>
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="p-1 rounded text-stone-300 hover:text-white"
+          className="p-1 text-[#aeb5b2] hover:text-[#f5f0e7]"
         >
-          {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
       </div>
 
       {/* Desktop Sidebar */}
       <aside
-        className={`w-64 bg-stone-900 text-stone-300 border-r border-stone-800 flex flex-col justify-between shrink-0 ${
+        className={`w-64 bg-[#20272b] text-[#aeb5b2] border-r border-white/10 flex flex-col justify-between shrink-0 ${
           mobileMenuOpen ? "block" : "hidden md:flex"
         }`}
       >
-        <div className="p-4 space-y-6">
+        <div className="p-5 space-y-6">
           {/* Logo & Portal Mode */}
-          <div className="flex items-center justify-between pb-3 border-b border-stone-800">
+          <div className="flex items-center justify-between pb-4 border-b border-white/10">
             <Link href="/" className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-lg bg-[#d4560a] text-white flex items-center justify-center font-bold text-sm">
-                <Factory className="w-4 h-4" />
+              <div className="w-8 h-8 bg-[#e46e2e] text-[#f5f0e7] flex items-center justify-center font-bold font-mono text-sm">
+                IN
               </div>
               <div>
-                <span className="font-bold text-sm text-white block tracking-tight">
+                <span className="font-semibold text-xs text-[#f5f0e7] block tracking-[.2em] uppercase">
                   INDUSTRIA
                 </span>
-                <span className="text-[10px] text-amber-400 font-mono">Customer Portal</span>
+                <span className="text-[10px] text-[#e7a45c] font-mono">Buyer Portal</span>
               </div>
             </Link>
           </div>
 
           {/* Logged in Company Card */}
-          <div className="p-3 rounded-xl bg-stone-800/80 border border-stone-700/80 space-y-1">
-            <span className="text-[10px] uppercase font-bold text-stone-400 tracking-wider">
+          <div className="p-3.5 bg-[#171c1e] border border-white/10 space-y-1">
+            <span className="text-[10px] font-mono uppercase tracking-wider text-[#e7a45c] font-bold block">
               Active Buyer Account
             </span>
-            <div className="font-bold text-xs text-white truncate">
+            <div className="font-semibold text-xs text-[#f5f0e7] truncate">
               {currentCustomer.companyName}
             </div>
-            <div className="text-[11px] text-stone-400 flex items-center gap-1">
+            <div className="text-[11px] font-mono text-[#7e8989] flex items-center gap-1">
               <span>{currentCustomer.contactPerson}</span>
-              <span className="text-stone-600">•</span>
+              <span>•</span>
               <span>{currentCustomer.city}</span>
             </div>
           </div>
@@ -113,13 +110,13 @@ export const PortalLayout: React.FC<{ children: React.ReactNode }> = ({ children
                   key={item.href}
                   href={item.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-semibold transition-colors ${
+                  className={`flex items-center gap-3 px-3 py-2 text-xs font-semibold transition-colors ${
                     isActive
-                      ? "bg-[#d4560a] text-white shadow-sm"
-                      : "text-stone-400 hover:text-white hover:bg-stone-800/60"
+                      ? "bg-[#e46e2e] text-[#f5f0e7] shadow-sm"
+                      : "text-[#aeb5b2] hover:text-[#f5f0e7] hover:bg-white/5"
                   }`}
                 >
-                  <Icon className="w-4 h-4 shrink-0" />
+                  <Icon size={15} className="shrink-0" />
                   <span>{item.title}</span>
                 </Link>
               );
@@ -128,24 +125,24 @@ export const PortalLayout: React.FC<{ children: React.ReactNode }> = ({ children
         </div>
 
         {/* Sidebar Footer */}
-        <div className="p-4 border-t border-stone-800 space-y-2 text-xs">
+        <div className="p-5 border-t border-white/10 space-y-2 text-xs">
           <Link
             href="/admin/dashboard"
             onClick={() => setCurrentUserRole("Admin")}
-            className="flex items-center justify-between p-2 rounded-lg bg-stone-800 hover:bg-stone-700 text-stone-300 hover:text-white transition-colors"
+            className="flex items-center justify-between p-2.5 bg-[#171c1e] hover:bg-black/40 border border-white/10 text-[#aeb5b2] hover:text-[#f5f0e7] transition-colors"
           >
             <span className="flex items-center gap-2">
-              <Shield className="w-4 h-4 text-amber-400" />
-              <span>Switch to Admin CRM</span>
+              <Shield size={14} className="text-[#e7a45c]" />
+              <span className="text-[11px] font-mono">Switch to Admin CRM</span>
             </span>
-            <ExternalLink className="w-3.5 h-3.5 text-stone-500" />
+            <ExternalLink size={12} className="text-[#7e8989]" />
           </Link>
 
           <Link
             href="/"
-            className="flex items-center gap-2 px-2 py-1.5 text-stone-400 hover:text-stone-200"
+            className="flex items-center gap-2 px-2 py-1.5 text-[11px] font-mono text-[#7e8989] hover:text-[#f5f0e7]"
           >
-            <LogOut className="w-4 h-4" />
+            <LogOut size={13} />
             <span>Return to Public Website</span>
           </Link>
         </div>
@@ -154,13 +151,13 @@ export const PortalLayout: React.FC<{ children: React.ReactNode }> = ({ children
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col min-w-0">
         {/* Topbar */}
-        <header className="bg-white border-b border-stone-200 px-6 py-3.5 flex items-center justify-between sticky top-6 z-30 shadow-xs">
+        <header className="bg-white border-b border-[#e5dfd5] px-6 py-3.5 flex items-center justify-between sticky top-0 z-30 shadow-xs">
           <div className="flex items-center gap-3">
-            <h1 className="font-bold text-base text-stone-900 tracking-tight">
+            <h1 className="font-semibold text-sm text-[#20272b] tracking-tight uppercase font-mono">
               {navLinks.find((l) => l.href === pathname)?.title || "Customer Portal"}
             </h1>
-            <span className="hidden sm:inline text-xs text-stone-400">|</span>
-            <span className="hidden sm:inline text-xs text-stone-500 font-medium">
+            <span className="hidden sm:inline text-xs text-[#aeb5b2]">|</span>
+            <span className="hidden sm:inline text-xs text-[#7e8989] font-mono">
               Self-service Procurement Workspace
             </span>
           </div>
@@ -170,39 +167,41 @@ export const PortalLayout: React.FC<{ children: React.ReactNode }> = ({ children
             <div className="relative">
               <button
                 onClick={() => setNotificationsOpen(!notificationsOpen)}
-                className="p-2 rounded-lg border border-stone-200 hover:bg-stone-50 text-stone-600 relative"
+                className="p-2 border border-[#d5cfc5] hover:bg-[#faf6ee] text-[#20272b] relative transition-colors"
                 title="Notifications"
               >
-                <Bell className="w-4 h-4" />
+                <Bell size={15} />
                 {unreadCount > 0 && (
-                  <span className="absolute top-1 right-1 w-2 h-2 rounded-full bg-[#d4560a]" />
+                  <span className="absolute top-1 right-1 w-2 h-2 bg-[#e46e2e]" />
                 )}
               </button>
 
               {notificationsOpen && (
                 <div
                   onMouseLeave={() => setNotificationsOpen(false)}
-                  className="absolute right-0 top-full mt-2 w-80 bg-white rounded-xl shadow-2xl border border-stone-200 p-3 z-50 text-xs space-y-2 animate-in fade-in duration-100"
+                  className="absolute right-0 top-full mt-2 w-80 bg-white border border-[#d5cfc5] shadow-2xl p-3.5 z-50 text-xs space-y-2 animate-in fade-in duration-100"
                 >
-                  <div className="flex items-center justify-between pb-2 border-b border-stone-100">
-                    <span className="font-bold text-stone-900">Notifications</span>
-                    <span className="text-[10px] text-stone-500">{unreadCount} unread</span>
+                  <div className="flex items-center justify-between pb-2 border-b border-[#e5dfd5]">
+                    <span className="font-semibold text-[#20272b] font-mono text-xs">Notifications</span>
+                    <span className="text-[10px] font-mono text-[#7e8989]">{unreadCount} unread</span>
                   </div>
                   <div className="max-h-60 overflow-y-auto space-y-2">
                     {notifications.slice(0, 5).map((n) => (
                       <div
                         key={n.id}
                         onClick={() => markNotificationAsRead(n.id)}
-                        className={`p-2 rounded-lg transition-colors cursor-pointer ${
-                          n.read ? "bg-stone-50 text-stone-600" : "bg-orange-50/60 text-stone-900 font-medium"
+                        className={`p-2.5 transition-colors cursor-pointer border ${
+                          n.read
+                            ? "bg-[#faf6ee] border-[#e5dfd5] text-[#7e8989]"
+                            : "bg-[#fff7ed] border-[#fed7aa] text-[#20272b] font-medium"
                         }`}
                       >
-                        <div className="flex justify-between items-center text-[10px] text-stone-400 mb-0.5">
+                        <div className="flex justify-between items-center text-[10px] text-[#7e8989] mb-0.5">
                           <span className="uppercase font-mono">{n.type}</span>
                           <span>{n.time}</span>
                         </div>
                         <div className="text-xs font-semibold">{n.title}</div>
-                        <p className="text-[11px] text-stone-500 line-clamp-2 mt-0.5">{n.description}</p>
+                        <p className="text-[11px] text-[#7e8989] line-clamp-2 mt-0.5">{n.description}</p>
                       </div>
                     ))}
                   </div>
@@ -212,9 +211,9 @@ export const PortalLayout: React.FC<{ children: React.ReactNode }> = ({ children
 
             <Link
               href="/request-quote"
-              className="px-3.5 py-1.5 rounded-lg bg-[#d4560a] hover:bg-[#b84605] text-white text-xs font-semibold shadow-xs flex items-center gap-1.5"
+              className="px-3.5 py-1.5 bg-[#e46e2e] hover:bg-[#bb5b2c] text-[#f5f0e7] text-xs font-semibold uppercase tracking-wider shadow-xs flex items-center gap-1.5 transition-colors"
             >
-              <FileText className="w-3.5 h-3.5" />
+              <FileText size={13} />
               <span className="hidden sm:inline">New RFQ</span>
             </Link>
           </div>

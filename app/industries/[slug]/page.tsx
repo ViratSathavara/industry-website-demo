@@ -16,8 +16,6 @@ import {
   Users,
   Layers,
   ArrowRight,
-  Check,
-  Clock,
   Sparkles
 } from "lucide-react";
 
@@ -38,46 +36,46 @@ export default function IndustryDetailPage() {
   const industryProducts = products.filter((p) => p.industryId === industry.id);
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#fafaf8]">
+    <div className="min-h-screen flex flex-col bg-[#20272b] text-[#f5f0e7]">
       <Navbar />
 
       <main className="flex-1">
         {/* Industry Hero Header */}
-        <section className="relative bg-stone-900 text-white py-16 border-b border-stone-800 overflow-hidden">
-          <div className="absolute inset-0 bg-stone-900/60 z-10" />
+        <section className="relative bg-[#171c1e] text-[#f5f0e7] pt-32 pb-16 border-b border-white/10 overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-r from-[#171c1e] via-[#171c1e]/90 to-transparent z-10" />
           <Image
             src={industry.heroImage}
             alt={industry.name}
             fill
             priority
-            className="object-cover opacity-35"
+            className="object-cover opacity-25"
           />
 
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
+          <div className="max-w-[1440px] mx-auto px-5 md:px-10 lg:px-14 relative z-20">
             {/* Breadcrumb */}
-            <div className="flex items-center gap-1.5 text-xs text-stone-400 mb-4">
-              <Link href="/" className="hover:text-white">
+            <div className="flex items-center gap-2 text-xs text-[#aeb5b2] font-mono mb-6">
+              <Link href="/" className="hover:text-[#e7a45c] transition-colors">
                 Home
               </Link>
-              <ChevronRight className="w-3.5 h-3.5" />
-              <Link href="/industries" className="hover:text-white">
+              <ChevronRight size={13} className="text-[#7e8989]" />
+              <Link href="/industries" className="hover:text-[#e7a45c] transition-colors">
                 Industries
               </Link>
-              <ChevronRight className="w-3.5 h-3.5" />
-              <span className="text-white font-medium">{industry.name}</span>
+              <ChevronRight size={13} className="text-[#7e8989]" />
+              <span className="text-[#f5f0e7] font-semibold">{industry.name}</span>
             </div>
 
             <div className="max-w-3xl space-y-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-stone-800/80 border border-stone-700 text-amber-400 text-xs font-semibold">
-                <Sparkles className="w-3.5 h-3.5" />
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#20272b] border border-[#e7a45c]/30 text-[#e7a45c] text-xs font-mono font-bold">
+                <Sparkles size={14} />
                 <span>Sector Focus</span>
               </div>
 
-              <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight">
-                {industry.name}
+              <h1 className="text-4xl sm:text-6xl font-display tracking-tight text-[#f5f0e7] leading-tight">
+                {industry.name} <em className="text-[#e7a45c]">Engineering.</em>
               </h1>
 
-              <p className="text-base text-stone-300 leading-relaxed max-w-2xl">
+              <p className="text-sm sm:text-base text-[#aeb5b2] leading-relaxed max-w-2xl">
                 {industry.description}
               </p>
 
@@ -85,29 +83,29 @@ export default function IndustryDetailPage() {
               <div className="flex flex-wrap items-center gap-3 pt-4">
                 <button
                   onClick={() => setSelectedIndustryId(industry.id)}
-                  className={`px-4 py-2.5 rounded-lg text-xs font-bold transition-all flex items-center gap-2 shadow-sm ${
+                  className={`px-5 py-2.5 text-xs font-semibold uppercase tracking-wider transition-all flex items-center gap-2 shadow-sm ${
                     isCurrentActive
                       ? "bg-emerald-600 text-white"
-                      : "bg-[#d4560a] text-white hover:bg-[#b84605]"
+                      : "bg-[#e46e2e] text-[#f5f0e7] hover:bg-[#bb5b2c]"
                   }`}
                 >
-                  <Layers className="w-4 h-4" />
+                  <Layers size={14} />
                   <span>{isCurrentActive ? "Active Demo Sector" : "Set as Active Demo Sector"}</span>
                 </button>
 
                 <Link
                   href={`/request-quote?industryId=${industry.id}`}
-                  className="px-4 py-2.5 rounded-lg bg-stone-800 text-stone-200 hover:bg-stone-700 border border-stone-700 text-xs font-semibold flex items-center gap-1.5 transition-colors"
+                  className="px-5 py-2.5 bg-[#20272b] hover:bg-white/10 text-[#f5f0e7] border border-white/20 text-xs font-semibold uppercase tracking-wider flex items-center gap-2 transition-colors"
                 >
-                  <FileText className="w-4 h-4 text-[#d4560a]" />
+                  <FileText size={14} className="text-[#e7a45c]" />
                   <span>Request Sector RFQ</span>
                 </Link>
 
                 <Link
                   href={`/book-demo?industryId=${industry.id}`}
-                  className="px-4 py-2.5 rounded-lg bg-stone-800 text-stone-200 hover:bg-stone-700 border border-stone-700 text-xs font-semibold flex items-center gap-1.5 transition-colors"
+                  className="px-5 py-2.5 bg-[#20272b] hover:bg-white/10 text-[#f5f0e7] border border-white/20 text-xs font-semibold uppercase tracking-wider flex items-center gap-2 transition-colors"
                 >
-                  <Calendar className="w-4 h-4 text-emerald-400" />
+                  <Calendar size={14} className="text-[#e7a45c]" />
                   <span>Book Plant Consultation</span>
                 </Link>
               </div>
@@ -117,66 +115,71 @@ export default function IndustryDetailPage() {
 
         {/* 2-Column Content Layout */}
         <section className="py-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-[1440px] mx-auto px-5 md:px-10 lg:px-14">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
               {/* Left Column: Products, Capabilities, Applications */}
               <div className="lg:col-span-8 space-y-12">
                 {/* Sector Products */}
                 <div>
-                  <div className="flex items-center justify-between mb-6 pb-2 border-b border-stone-200">
+                  <div className="flex items-center justify-between mb-6 pb-3 border-b border-white/10">
                     <div>
-                      <h2 className="text-xl font-bold text-stone-900">
-                        Featured {industry.name} Products
+                      <h2 className="text-2xl font-display text-[#f5f0e7]">
+                        Featured {industry.name} <em className="text-[#e7a45c]">Components</em>
                       </h2>
-                      <p className="text-xs text-stone-500">
-                        Standard specifications and custom manufactured components
+                      <p className="text-xs text-[#aeb5b2] mt-1">
+                        High-tolerance specifications and serial production components
                       </p>
                     </div>
                     <Link
                       href="/products"
-                      className="text-xs text-[#d4560a] font-bold hover:underline"
+                      className="text-xs text-[#e7a45c] font-semibold hover:underline flex items-center gap-1"
                     >
-                      View All Products →
+                      <span>View All Products</span>
+                      <ArrowRight size={13} />
                     </Link>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     {industryProducts.map((prod) => (
                       <div
                         key={prod.id}
-                        className="bg-white rounded-xl border border-stone-200 p-4 hover:shadow-md transition-shadow flex flex-col justify-between"
+                        className="bg-[#171c1e] border border-white/10 hover:border-[#e7a45c]/50 p-5 flex flex-col justify-between transition-all group shadow-xl"
                       >
                         <div>
-                          <div className="relative h-40 w-full rounded-lg overflow-hidden mb-3 bg-stone-100">
+                          <div className="relative h-44 w-full overflow-hidden mb-4 bg-[#20272b] border border-white/10">
                             <Image
                               src={prod.images[0]}
                               alt={prod.name}
                               fill
+                              unoptimized={prod.images[0].endsWith(".svg")}
                               sizes="(max-width: 768px) 100vw, 33vw"
-                              className="object-cover"
+                              className="object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100"
                             />
-                            <span className="absolute top-2 left-2 bg-stone-900/80 backdrop-blur-md text-white text-[10px] font-mono px-2 py-0.5 rounded font-bold">
+                            <span className="absolute top-2.5 left-2.5 bg-[#20272b]/90 backdrop-blur-md text-[#e7a45c] text-[10px] font-mono px-2 py-0.5 border border-[#e7a45c]/30 font-bold">
                               {prod.sku}
                             </span>
+                            <span className="absolute bottom-2.5 right-2.5 bg-[#20272b]/90 text-[#aeb5b2] text-[10px] font-mono px-2 py-0.5 border border-white/10">
+                              {prod.materials[0]}
+                            </span>
                           </div>
-                          <h3 className="font-bold text-sm text-stone-900 line-clamp-2 leading-snug">
+                          <h3 className="font-semibold text-base text-[#f5f0e7] group-hover:text-[#e7a45c] transition-colors line-clamp-2 leading-snug">
                             {prod.name}
                           </h3>
-                          <p className="text-xs text-stone-500 mt-1 line-clamp-2">
+                          <p className="text-xs text-[#aeb5b2] mt-2 line-clamp-2 leading-relaxed">
                             {prod.shortDescription}
                           </p>
                         </div>
 
-                        <div className="pt-3 border-t border-stone-100 mt-3 flex items-center justify-between">
-                          <span className="text-xs font-bold text-[#d4560a]">
+                        <div className="pt-4 border-t border-white/10 mt-4 flex items-center justify-between">
+                          <span className="text-xs font-mono font-bold text-[#e7a45c]">
                             {prod.priceMode}
                           </span>
                           <Link
                             href={`/products/${prod.slug}`}
-                            className="text-xs text-stone-700 hover:text-stone-900 font-semibold flex items-center gap-1"
+                            className="text-xs text-[#f5f0e7] hover:text-[#e7a45c] font-semibold flex items-center gap-1.5 transition-colors"
                           >
                             <span>Specs & Quote</span>
-                            <ArrowRight className="w-3.5 h-3.5" />
+                            <ArrowRight size={13} className="text-[#e7a45c]" />
                           </Link>
                         </div>
                       </div>
@@ -185,20 +188,20 @@ export default function IndustryDetailPage() {
                 </div>
 
                 {/* Applications Served */}
-                <div className="bg-white rounded-xl border border-stone-200 p-6">
-                  <h3 className="text-lg font-bold text-stone-900 mb-2">
-                    Key Applications & Usages
+                <div className="bg-[#171c1e] border border-white/10 p-6 sm:p-8">
+                  <h3 className="text-xl font-display text-[#f5f0e7] mb-2">
+                    Key Applications & <em className="text-[#e7a45c]">Subsystems</em>
                   </h3>
-                  <p className="text-xs text-stone-500 mb-4">
-                    Where components and machinery from this sector are deployed:
+                  <p className="text-xs text-[#aeb5b2] mb-6">
+                    Where machined components and precision assemblies from this sector are deployed:
                   </p>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {industry.applications.map((app) => (
                       <div
                         key={app}
-                        className="flex items-center gap-2 p-2.5 rounded-lg bg-stone-50 border border-stone-200 text-xs font-medium text-stone-800"
+                        className="flex items-center gap-3 p-3 bg-[#20272b] border border-white/10 text-xs text-[#f5f0e7]"
                       >
-                        <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                        <CheckCircle2 size={16} className="text-[#e7a45c] shrink-0" />
                         <span>{app}</span>
                       </div>
                     ))}
@@ -206,20 +209,20 @@ export default function IndustryDetailPage() {
                 </div>
 
                 {/* Manufacturing Capabilities */}
-                <div className="bg-white rounded-xl border border-stone-200 p-6">
-                  <h3 className="text-lg font-bold text-stone-900 mb-2">
-                    In-House Plant Capabilities
+                <div className="bg-[#171c1e] border border-white/10 p-6 sm:p-8">
+                  <h3 className="text-xl font-display text-[#f5f0e7] mb-2">
+                    Calibrated Plant <em className="text-[#e7a45c]">Capabilities</em>
                   </h3>
-                  <p className="text-xs text-stone-500 mb-4">
-                    Advanced machinery calibrated for high-precision operations:
+                  <p className="text-xs text-[#aeb5b2] mb-6">
+                    Advanced CNC centers and metrology calibrated for this industry:
                   </p>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {industry.capabilities.map((cap) => (
                       <div
                         key={cap}
-                        className="flex items-center gap-2 p-2.5 rounded-lg bg-orange-50/60 border border-orange-200 text-xs font-medium text-stone-800"
+                        className="flex items-center gap-3 p-3 bg-[#20272b] border border-[#e7a45c]/20 text-xs text-[#f5f0e7]"
                       >
-                        <ShieldCheck className="w-4 h-4 text-[#d4560a] shrink-0" />
+                        <ShieldCheck size={16} className="text-[#e7a45c] shrink-0" />
                         <span>{cap}</span>
                       </div>
                     ))}
@@ -230,17 +233,17 @@ export default function IndustryDetailPage() {
               {/* Right Column: Buyer Personas & RFQ Fields preview */}
               <div className="lg:col-span-4 space-y-6">
                 {/* Personas Card */}
-                <div className="bg-white rounded-xl border border-stone-200 p-5 shadow-xs">
-                  <div className="flex items-center gap-2 pb-3 border-b border-stone-100 mb-3">
-                    <Users className="w-4 h-4 text-[#d4560a]" />
-                    <h3 className="font-bold text-xs uppercase tracking-wider text-stone-900">
+                <div className="bg-[#171c1e] border border-white/10 p-6 shadow-xl">
+                  <div className="flex items-center gap-2 pb-4 border-b border-white/10 mb-4">
+                    <Users size={16} className="text-[#e7a45c]" />
+                    <h3 className="font-mono text-xs uppercase tracking-[.12em] text-[#e7a45c] font-bold">
                       Typical Buyer Personas
                     </h3>
                   </div>
-                  <ul className="space-y-2 text-xs text-stone-600">
+                  <ul className="space-y-2.5 text-xs text-[#aeb5b2]">
                     {industry.buyerPersonas.map((bp) => (
-                      <li key={bp} className="flex items-center gap-2 p-1.5 rounded bg-stone-50">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#d4560a]" />
+                      <li key={bp} className="flex items-center gap-2.5 p-2.5 bg-[#20272b] border border-white/5">
+                        <span className="w-1.5 h-1.5 bg-[#e7a45c]" />
                         <span>{bp}</span>
                       </li>
                     ))}
@@ -248,24 +251,24 @@ export default function IndustryDetailPage() {
                 </div>
 
                 {/* Common RFQ Fields Preview Card */}
-                <div className="bg-white rounded-xl border border-stone-200 p-5 shadow-xs">
-                  <div className="flex items-center gap-2 pb-3 border-b border-stone-100 mb-3">
-                    <FileText className="w-4 h-4 text-emerald-600" />
-                    <h3 className="font-bold text-xs uppercase tracking-wider text-stone-900">
+                <div className="bg-[#171c1e] border border-white/10 p-6 shadow-xl">
+                  <div className="flex items-center gap-2 pb-4 border-b border-white/10 mb-4">
+                    <FileText size={16} className="text-[#e7a45c]" />
+                    <h3 className="font-mono text-xs uppercase tracking-[.12em] text-[#e7a45c] font-bold">
                       Standard RFQ Parameters
                     </h3>
                   </div>
-                  <p className="text-[11px] text-stone-500 mb-3">
-                    When buyers submit RFQs for {industry.name}, our digital forms collect:
+                  <p className="text-[11px] text-[#aeb5b2] mb-4">
+                    When OEM buyers submit technical inquiries for {industry.name}, our form captures:
                   </p>
-                  <div className="space-y-2">
+                  <div className="space-y-2.5">
                     {industry.rfqFields.map((f) => (
                       <div
                         key={f.name}
-                        className="p-2 rounded bg-stone-50 border border-stone-200 text-xs"
+                        className="p-3 bg-[#20272b] border border-white/10 text-xs"
                       >
-                        <div className="font-semibold text-stone-800">{f.label}</div>
-                        <div className="text-[10px] text-stone-400 font-mono">
+                        <div className="font-semibold text-[#f5f0e7]">{f.label}</div>
+                        <div className="text-[10px] text-[#7e8989] font-mono mt-0.5">
                           Type: {f.type} {f.options ? `(${f.options.length} options)` : ""}
                         </div>
                       </div>
@@ -274,23 +277,24 @@ export default function IndustryDetailPage() {
 
                   <Link
                     href={`/request-quote?industryId=${industry.id}`}
-                    className="w-full mt-4 py-2 text-center text-xs font-bold bg-[#d4560a] text-white rounded-lg block hover:bg-[#b84605] transition-colors"
+                    className="w-full mt-6 py-3 text-center text-xs font-semibold uppercase tracking-wider bg-[#e46e2e] hover:bg-[#bb5b2c] text-[#f5f0e7] block transition-colors shadow-md"
                   >
-                    Open Live RFQ Form
+                    Open Live RFQ Configurator
                   </Link>
                 </div>
 
                 {/* Help Desk Callout */}
-                <div className="bg-stone-900 rounded-xl p-5 text-white text-xs space-y-3">
-                  <h4 className="font-bold text-amber-400">Need Technical Consultation?</h4>
-                  <p className="text-stone-300 leading-relaxed text-[11px]">
-                    Schedule a factory visit or technical discussion with our {industry.name} lead engineer.
+                <div className="bg-[#20272b] border border-[#e7a45c]/40 p-6 text-xs space-y-3 shadow-xl">
+                  <h4 className="font-display text-lg text-[#e7a45c]">Technical Engineering Consultation</h4>
+                  <p className="text-[#aeb5b2] leading-relaxed text-xs">
+                    Schedule a plant audit or direct engineering review with our {industry.name} lead manufacturing engineer.
                   </p>
                   <Link
                     href="/book-demo"
-                    className="inline-block px-3 py-1.5 bg-stone-800 hover:bg-stone-700 text-white rounded font-medium border border-stone-700"
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-[#171c1e] hover:bg-black text-[#f5f0e7] font-semibold border border-white/20 text-xs uppercase tracking-wider transition-colors mt-2"
                   >
-                    Book Factory Visit →
+                    <span>Book Factory Audit</span>
+                    <ArrowRight size={13} className="text-[#e7a45c]" />
                   </Link>
                 </div>
               </div>

@@ -15,8 +15,7 @@ export const mockProducts: Product[] = [
     shortDescription: "Precision CNC turned ASME B16.5 forged stainless steel 316L weldneck flange designed for high-pressure process pipelines.",
     fullDescription: "Manufactured from certified forged ASTM A182 F316/316L dual grade material. Each flange undergoes CNC face turning with serrated spiral phonographic finish (125-250 Ra). Fully inspected on Zeiss 3D CMM with ultrasonic testing certificates for high-integrity chemical and refinery installations.",
     images: [
-      "https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80"
+      "/images/components/flange-asme.svg"
     ],
     priceMode: "Request Quote",
     unit: "Piece",
@@ -66,8 +65,7 @@ export const mockProducts: Product[] = [
     shortDescription: "Simultaneous 5-axis continuous milled bladed impeller in aerospace-grade Titanium Ti-6Al-4V and Inconel 718 with dynamic balancing.",
     fullDescription: "Machined from solid forged billet on Mazak Integrex 5-axis multi-tasking centers. Aerodynamic airfoil contours are continuous-milled within ±0.005mm surface profile accuracy. Every rotor undergoes high-speed dynamic balancing (ISO 1940 Grade G1.0) and fluorescent penetrant testing (FPI Level 3) for zero aerodynamic cavitation.",
     images: [
-      "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=800&q=80"
+      "/images/components/impeller-5axis.svg"
     ],
     priceMode: "Request Quote",
     unit: "Unit",
@@ -117,8 +115,7 @@ export const mockProducts: Product[] = [
     shortDescription: "CNC turned and precision-hobbed involute spline shaft with case induction hardening (58-62 HRC) and sub-micron cylindrical ground journals.",
     fullDescription: "Engineered for automotive transmissions, heavy tractors, and industrial gearboxes. Features precision CNC turned bearing steps, hobbed involute splines (DIN 5480 standard), case carburized or induction hardened wear zones, and finished on CNC cylindrical grinders ensuring total radial runout under 0.004mm.",
     images: [
-      "https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=800&q=80"
+      "/images/components/spline-shaft.svg"
     ],
     priceMode: "Request Quote",
     unit: "Piece",
@@ -167,8 +164,7 @@ export const mockProducts: Product[] = [
     shortDescription: "Gun-drilled solid ductile iron & aerospace aluminum hydraulic manifold block rated to 420 bar with SUN / Rexroth cavity cavities.",
     fullDescription: "Machined from high-density continuous cast ductile iron (GGG40) or 6061-T6 aluminum. Deep-hole gun-drilled cross passages are high-pressure water deburred and chemically passivated to prevent internal metal particulate contamination. Pressure proof-tested to 1.5x working pressure with zero internal valve cross-port leakage.",
     images: [
-      "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=800&q=80"
+      "/images/components/manifold-block.svg"
     ],
     priceMode: "Request Quote",
     unit: "Unit",
@@ -217,8 +213,7 @@ export const mockProducts: Product[] = [
     shortDescription: "Vibration-damped structural steel base frame designed for high-tonnage machine tools with thermal stress relieving and gantry milling.",
     fullDescription: "Constructed from IS 2062 Grade E250 heavy structural I-beams and reinforced box sections. All joints are full penetration Submerged Arc and MIG welded by ASME Section IX qualified welders. Undergoes thermal stress relieving in a computerized furnace at 600°C followed by CNC 5-face gantry milling for flat guide rail mounting pads within 0.03mm flatness.",
     images: [
-      "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=800&q=80"
+      "/images/components/machine-base.svg"
     ],
     priceMode: "Request Quote",
     unit: "Unit",
@@ -267,8 +262,7 @@ export const mockProducts: Product[] = [
     shortDescription: "Ultra-lightweight monolithic 5-axis CNC pocket-milled aerospace bracket with 1.2mm thin walls and MIL-A-8625 Type III hard anodizing.",
     fullDescription: "Machined from certified AMS 4045 aerospace aluminum 7075-T6 solid forged billet. High-speed 24,000 RPM spindles mill ultra-thin pockets down to 1.2mm wall thickness without chatter or residual stress warp. Every part is 100% CMM probed, conductivity tested, and hard anodized with Teflon seal for harsh atmospheric conditions.",
     images: [
-      "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=800&q=80"
+      "/images/components/wing-rib.svg"
     ],
     priceMode: "Request Quote",
     unit: "Piece",
@@ -316,8 +310,7 @@ export const mockProducts: Product[] = [
     shortDescription: "High-torque phosphor bronze PB2 concave worm wheel and case hardened EN24 ground worm shaft set machined to AGMA Class 11 precision.",
     fullDescription: "Designed for heavy industrial elevator hoists, solar tracker slewing drives, and rotary index tables. The double-enveloping hourglass geometry provides 3x greater tooth contact area compared to cylindrical worm sets, resisting extreme shock loads. Precision tooth contact pattern is verified with Prussian blue dye transfer.",
     images: [
-      "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=800&q=80"
+      "/images/components/worm-gear.svg"
     ],
     priceMode: "Request Quote",
     unit: "Set",
@@ -365,8 +358,7 @@ export const mockProducts: Product[] = [
     shortDescription: "Investment cast & CNC multi-axis machined ASTM A351 CF8M cryogenic valve body tested for LNG service down to -196°C.",
     fullDescription: "Cast from certified ASTM A351 Grade CF8M (316) stainless steel and machined on horizontal machining centers (HMC) with rotary tombstones. Seat faces and packing glands are micro-turned and Stellite hard-faced to ensure tight ISO 5208 Rate A zero leakage during cryogenic LNG and liquid nitrogen service.",
     images: [
-      "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=800&q=80"
+      "/images/components/valve-body.svg"
     ],
     priceMode: "Request Quote",
     unit: "Piece",
@@ -414,8 +406,7 @@ export const mockProducts: Product[] = [
     shortDescription: "Ultra-precision hardened alloy steel output flange hub for industrial 6-axis articulated robot wrists with axial runout under 0.003mm.",
     fullDescription: "Machined from vacuum-degassed 42CrMo4 alloy steel. After rough turning and deep stress-relief annealing, critical bearing seats and bolt circles are finished on high-precision CNC hard-turning lathes and cylindrical grinders using CBN inserts. Designed to withstand repetitive dynamic torque reversals in automotive welding robots.",
     images: [
-      "https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=800&q=80"
+      "/images/components/robot-hub.svg"
     ],
     priceMode: "Request Quote",
     unit: "Piece",
@@ -463,8 +454,7 @@ export const mockProducts: Product[] = [
     shortDescription: "Heavy cast steel split pillow block bearing housing with hydrodynamic oil-film labyrinth seals for heavy mining SAG and ball mills.",
     fullDescription: "Cast from high-toughness ASTM A216 Grade WCB steel and machined on heavy CNC horizontal boring machines. Joint faces are matched-pair serrated and line-bored in a clamped state to guarantee exact spherical bearing seat alignment under 200-ton dynamic crushing loads. Includes integrated RTD temperature sensor ports and oil circulation conduits.",
     images: [
-      "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=800&q=80"
+      "/images/components/trunnion-housing.svg"
     ],
     priceMode: "Request Quote",
     unit: "Unit",
@@ -512,8 +502,7 @@ export const mockProducts: Product[] = [
     shortDescription: "Induction hardened 4140 chrome-moly excavator boom pivot pins (60 HRC, 3.5mm case depth) paired with grease-grooved hardened steel bushings.",
     fullDescription: "Manufactured for heavy earthmoving machinery (20-ton to 80-ton hydraulic excavators). Made from forged 42CrMo4/AISI 4140 alloy steel, precision CNC turned, gun-drilled with internal grease channels, induction hardened to 58-62 HRC, and centerless ground to mirror finish Ra 0.2µm to maximize seal and bushing life.",
     images: [
-      "https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80"
+      "/images/components/pivot-pin.svg"
     ],
     priceMode: "Request Quote",
     unit: "Set",
@@ -561,8 +550,7 @@ export const mockProducts: Product[] = [
     shortDescription: "Cast iron 4-sided hollow tombstone fixture with 50mm grid precision-ground bushings and M16 tapped holes for horizontal machining centers (HMC).",
     fullDescription: "Cast from stress-relieved high-density gray iron (Grade 300) with heavy internal cross-ribbing to absorb cutting vibrations. Mounted on standard 400mm, 500mm, or 630mm JIS pallet bases. All four working faces are ground square and parallel within 0.01mm over 600mm height, allowing multi-part batch machining on 4th-axis HMCs.",
     images: [
-      "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=800&q=80"
+      "/images/components/tombstone-fixture.svg"
     ],
     priceMode: "Request Quote",
     unit: "Unit",

@@ -141,3 +141,5 @@ You can switch roles anytime using the top demo bar or `/login`:
 
 ## 📄 License
 Proprietary industrial software blueprint developed for enterprise manufacturing demonstration.
+
+# industry-website-demo

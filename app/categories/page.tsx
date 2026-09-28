@@ -9,9 +9,9 @@ import { useDemoState } from "@/lib/services/demo-state-context";
 import {
   Layers,
   ArrowRight,
-  Package,
   Search,
-  ChevronRight
+  ChevronRight,
+  Cpu
 } from "lucide-react";
 
 export default function CategoriesPage() {
@@ -25,112 +25,98 @@ export default function CategoriesPage() {
   );
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#fafaf8]">
+    <div className="min-h-screen flex flex-col bg-[#20272b] text-[#f5f0e7]">
       <Navbar />
 
-      <main className="flex-1 py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <main className="flex-1 pt-28 pb-20 relative overflow-hidden">
+        <div className="max-w-[1440px] mx-auto px-5 md:px-10 lg:px-14 relative z-10">
           {/* Breadcrumb */}
-          <div className="flex items-center gap-1.5 text-xs text-stone-500 mb-6">
-            <Link href="/" className="hover:text-stone-900">Home</Link>
-            <ChevronRight className="w-3.5 h-3.5" />
-            <span className="text-stone-900 font-semibold">Product Categories</span>
+          <div className="flex items-center gap-2 text-xs text-[#aeb5b2] font-mono mb-8">
+            <Link href="/" className="hover:text-[#e7a45c] transition-colors">
+              Home
+            </Link>
+            <ChevronRight size={13} className="text-[#7e8989]" />
+            <span className="text-[#f5f0e7] font-semibold">Component Families</span>
           </div>
 
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between pb-6 border-b border-stone-200 mb-8 gap-4">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between pb-6 border-b border-white/10 mb-10 gap-4">
             <div>
-              <span className="text-xs font-bold uppercase tracking-widest text-[#d4560a]">
-                Product Classification
-              </span>
-              <h1 className="text-3xl font-extrabold text-stone-900 tracking-tight mt-1">
-                Industrial Product Categories
+              <span className="eyebrow text-[#e7a45c]">Component Classification</span>
+              <h1 className="text-4xl sm:text-5xl font-display tracking-tight text-[#f5f0e7] mt-2">
+                Precision Component <em className="text-[#e7a45c]">Families.</em>
               </h1>
-              <p className="text-xs sm:text-sm text-stone-600 mt-1 max-w-xl">
-                Browse our comprehensive catalogue categorized across 30+ precision engineering, machinery, and material groups.
+              <p className="text-xs sm:text-sm text-[#aeb5b2] mt-2 max-w-xl">
+                Browse our manufacturing catalogue categorized across 5-axis CNC machining, high-pressure ASME flanges, drivetrain splines, and hydraulic manifolds.
               </p>
             </div>
 
             <div className="relative w-full sm:w-72">
-              <Search className="w-4 h-4 text-stone-400 absolute left-3 top-3" />
+              <Search size={14} className="text-[#7e8989] absolute left-3 top-3" />
               <input
                 type="text"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                placeholder="Search categories..."
-                className="w-full bg-white pl-9 pr-4 py-2 border border-stone-300 rounded-lg text-xs text-stone-900 focus:outline-none focus:border-[#d4560a]"
+                placeholder="Search component families..."
+                className="w-full bg-[#171c1e] pl-9 pr-4 py-2 border border-white/15 text-xs text-[#f5f0e7] placeholder:text-[#7e8989] focus:outline-none focus:border-[#e7a45c]"
               />
             </div>
           </div>
 
-          {/* Categories Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredCategories.map((cat) => {
-              const categoryProductCount = products.filter(
-                (p) => p.categoryId === cat.id
-              ).length || cat.productCount;
+            {filteredCategories.map((c) => {
+              const count = products.filter((p) => p.categoryId === c.id).length;
 
               return (
-                <div
-                  key={cat.id}
-                  className="bg-white rounded-xl border border-stone-200 overflow-hidden flex flex-col justify-between hover:shadow-lg transition-all group"
+                <Link
+                  key={c.id}
+                  href={`/categories/${c.slug}`}
+                  className="bg-[#171c1e] border border-white/10 hover:border-[#e7a45c]/50 p-6 flex flex-col justify-between transition-all group shadow-xl"
                 >
-                  <div>
-                    <div className="relative h-44 w-full bg-stone-100 overflow-hidden">
+                  <div className="space-y-4">
+                    <div className="relative h-44 w-full overflow-hidden bg-[#20272b] border border-white/10">
                       <Image
-                        src={cat.image}
-                        alt={cat.name}
+                        src={c.image}
+                        alt={c.name}
                         fill
-                        sizes="(max-width: 768px) 100vw, 33vw"
-                        className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        unoptimized={c.image.endsWith(".svg")}
+                        className="object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                      <div className="absolute bottom-3 left-3 right-3 text-white">
-                        <span className="text-[10px] uppercase font-mono text-amber-300 block">
-                          {cat.industryName}
-                        </span>
-                        <h2 className="font-bold text-base leading-tight drop-shadow-sm">
-                          {cat.name}
-                        </h2>
-                      </div>
+                      <span className="absolute top-3 left-3 bg-[#20272b]/90 backdrop-blur-md px-2.5 py-1 text-[#e7a45c] font-mono text-[10px] font-bold border border-[#e7a45c]/30">
+                        {count} Components
+                      </span>
                     </div>
 
-                    <div className="p-4 space-y-3">
-                      <p className="text-xs text-stone-600 line-clamp-2 leading-relaxed">
-                        {cat.description}
+                    <div>
+                      <span className="text-[10px] font-mono uppercase tracking-[.12em] text-[#e7a45c] font-bold block">
+                        {c.industryName}
+                      </span>
+                      <h3 className="text-lg font-semibold text-[#f5f0e7] group-hover:text-[#e7a45c] transition-colors mt-1">
+                        {c.name}
+                      </h3>
+                      <p className="text-xs text-[#aeb5b2] mt-2 leading-relaxed line-clamp-2">
+                        {c.description}
                       </p>
-
-                      <div className="space-y-1">
-                        <span className="text-[10px] font-bold uppercase text-stone-400">
-                          Sub-Classifications:
-                        </span>
-                        <div className="flex flex-wrap gap-1">
-                          {cat.subcategories.map((sub) => (
-                            <span
-                              key={sub}
-                              className="text-[11px] bg-stone-100 text-stone-700 px-2 py-0.5 rounded"
-                            >
-                              {sub}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
                     </div>
+
+                    {c.subcategories && c.subcategories.length > 0 && (
+                      <div className="flex flex-wrap gap-1.5 pt-2">
+                        {c.subcategories.slice(0, 3).map((sub) => (
+                          <span
+                            key={sub}
+                            className="text-[10px] font-mono bg-[#20272b] text-[#d2d1c9] px-2 py-0.5 border border-white/10"
+                          >
+                            {sub}
+                          </span>
+                        ))}
+                      </div>
+                    )}
                   </div>
 
-                  <div className="p-4 pt-3 border-t border-stone-100 flex items-center justify-between text-xs">
-                    <span className="text-stone-500 font-medium">
-                      <strong>{categoryProductCount}</strong> Products listed
-                    </span>
-
-                    <Link
-                      href={`/categories/${cat.slug}`}
-                      className="text-[#d4560a] font-bold hover:underline flex items-center gap-1"
-                    >
-                      <span>Explore Category</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </Link>
+                  <div className="pt-4 border-t border-white/10 mt-4 flex items-center justify-between font-mono text-xs text-[#e7a45c]">
+                    <span>Inspect Line Items</span>
+                    <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                   </div>
-                </div>
+                </Link>
               );
             })}
           </div>

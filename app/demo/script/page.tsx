@@ -5,17 +5,12 @@ import Link from "next/link";
 import {
   Clock,
   MessageSquare,
-  CheckCircle2,
   AlertTriangle,
   ArrowRight,
   Sparkles,
-  Presentation,
   Shield,
   HelpCircle,
-  ExternalLink,
-  ChevronRight,
-  TrendingUp,
-  FileText
+  ExternalLink
 } from "lucide-react";
 
 export default function DemoScriptPage() {
@@ -106,24 +101,24 @@ export default function DemoScriptPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-neutral-900 text-white selection:bg-primary selection:text-white">
+    <div className="min-h-screen bg-[#20272b] text-[#f5f0e7] selection:bg-[#e46e2e] selection:text-white">
       {/* Top Header */}
-      <header className="px-6 py-4 border-b border-neutral-800 flex items-center justify-between sticky top-0 z-50 bg-neutral-900/90 backdrop-blur-md">
+      <header className="px-6 py-4 border-b border-white/10 flex items-center justify-between sticky top-0 z-50 bg-[#171c1e]/90 backdrop-blur-md">
         <div className="flex items-center gap-3">
           <Link
             href="/demo"
-            className="w-8 h-8 rounded-lg bg-neutral-800 hover:bg-neutral-700 flex items-center justify-center text-neutral-300 transition-colors"
+            className="w-8 h-8 bg-[#20272b] border border-white/10 hover:border-[#e7a45c] flex items-center justify-center text-[#f5f0e7] text-xs font-mono transition-colors"
           >
             ←
           </Link>
           <div>
-            <h1 className="font-bold text-sm tracking-tight font-heading flex items-center gap-2">
-              <span>SALES PRESENTATION TALK-TRACK</span>
-              <span className="text-[10px] px-2 py-0.2 rounded-full bg-primary/20 text-primary font-mono">
+            <h1 className="font-semibold text-sm tracking-tight flex items-center gap-2">
+              <span className="font-display text-base">SALES PRESENTATION TALK-TRACK</span>
+              <span className="text-[10px] px-2 py-0.2 bg-[#20272b] text-[#e7a45c] font-mono border border-[#e7a45c]/30 font-bold">
                 10-MINUTE PITCH
               </span>
             </h1>
-            <p className="text-[11px] text-neutral-400">
+            <p className="text-[11px] font-mono text-[#7e8989]">
               Battle-tested script for agency founders & enterprise sales reps pitching factory owners
             </p>
           </div>
@@ -132,13 +127,13 @@ export default function DemoScriptPage() {
         <div className="flex items-center gap-3">
           <Link
             href="/demo"
-            className="px-3 py-1.5 text-xs font-semibold rounded-lg bg-neutral-800 hover:bg-neutral-700 text-neutral-200 transition-colors"
+            className="px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider bg-[#20272b] hover:bg-white/10 text-[#f5f0e7] border border-white/10 transition-colors"
           >
             Launch Pitch Slides
           </Link>
           <Link
             href="/audit"
-            className="px-3 py-1.5 text-xs font-semibold rounded-lg bg-primary hover:bg-primary-hover text-white transition-colors"
+            className="px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider bg-[#e46e2e] hover:bg-[#bb5b2c] text-[#f5f0e7] transition-colors shadow-sm"
           >
             Interactive Audit
           </Link>
@@ -147,43 +142,43 @@ export default function DemoScriptPage() {
 
       <main className="max-w-6xl mx-auto px-6 py-10 space-y-12">
         {/* Intro Banner */}
-        <div className="p-6 rounded-2xl bg-neutral-800/80 border border-neutral-700/60 space-y-2">
-          <span className="text-xs uppercase tracking-wider text-primary font-bold">
-            Executive Summary
+        <div className="p-8 bg-[#171c1e] border border-white/10 space-y-3 shadow-xl">
+          <span className="eyebrow text-[#e7a45c]">
+            Executive Pitch Strategy
           </span>
-          <h2 className="text-2xl font-bold font-heading">
-            How to Pitch Industria in 10 Minutes & Close the Deal
+          <h2 className="text-3xl sm:text-4xl font-display text-[#f5f0e7]">
+            How to Pitch Industria in 10 Minutes & <em className="text-[#e7a45c]">Close the Deal.</em>
           </h2>
-          <p className="text-sm text-neutral-300 leading-relaxed max-w-4xl">
+          <p className="text-xs sm:text-sm text-[#aeb5b2] leading-relaxed max-w-4xl">
             Industrial factory owners (MSME directors, Tier-1 promoters) do not care about frontend tech stacks. They care about <strong>two things only:</strong> winning higher-margin export contracts and stopping their sales team from leaking qualified inquiries. Follow this exact minute-by-minute flow.
           </p>
         </div>
 
         {/* Script Timeline Stepper */}
         <div className="space-y-4">
-          <div className="flex items-center justify-between border-b border-neutral-800 pb-3">
-            <h3 className="text-lg font-bold font-heading flex items-center gap-2">
-              <Clock className="w-5 h-5 text-primary" />
+          <div className="flex items-center justify-between border-b border-white/10 pb-3">
+            <h3 className="text-xl font-display text-[#f5f0e7] flex items-center gap-2">
+              <Clock size={18} className="text-[#e7a45c]" />
               <span>Minute-by-Minute Live Demo Flow</span>
             </h3>
-            <span className="text-xs text-neutral-400">
+            <span className="text-xs font-mono text-[#7e8989]">
               Click a step to reveal exact verbiage and software actions
             </span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-6 gap-2">
+          <div className="grid grid-cols-2 md:grid-cols-6 gap-2">
             {scriptTimeline.map((step, idx) => (
               <button
                 key={idx}
                 onClick={() => setActiveMinute(idx)}
-                className={`p-3 rounded-xl text-left border transition-all ${
+                className={`p-3 text-left border transition-all ${
                   activeMinute === idx
-                    ? "bg-primary text-white border-primary shadow-lg"
-                    : "bg-neutral-800/70 hover:bg-neutral-800 text-neutral-400 border-neutral-700/60"
+                    ? "bg-[#e46e2e] text-[#f5f0e7] border-[#e46e2e] shadow-lg"
+                    : "bg-[#171c1e] hover:bg-[#20272b] text-[#aeb5b2] border-white/10"
                 }`}
               >
                 <div className="text-[10px] font-mono font-bold">{step.minute}</div>
-                <div className="text-xs font-bold mt-1 text-white leading-tight truncate">
+                <div className="text-xs font-semibold mt-1 text-[#f5f0e7] leading-tight truncate">
                   {step.stage}
                 </div>
               </button>
@@ -191,45 +186,45 @@ export default function DemoScriptPage() {
           </div>
 
           {/* Active Minute Detail Card */}
-          <div className="p-6 rounded-2xl bg-neutral-800 border border-neutral-700 space-y-6 animate-fade-in">
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 border-b border-neutral-700 pb-4">
+          <div className="p-8 bg-[#171c1e] border border-white/10 space-y-6 shadow-xl animate-fade-in">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-white/10 pb-4">
               <div>
-                <span className="text-xs font-mono font-bold text-primary">
+                <span className="text-xs font-mono font-bold text-[#e7a45c]">
                   {scriptTimeline[activeMinute].minute}
                 </span>
-                <h3 className="text-xl font-bold text-white mt-0.5 font-heading">
+                <h3 className="text-2xl font-display text-[#f5f0e7] mt-1">
                   {scriptTimeline[activeMinute].stage}
                 </h3>
               </div>
-              <div className="text-xs text-neutral-300 bg-neutral-900/60 px-3 py-1.5 rounded-lg border border-neutral-700/60">
-                <strong>Objective:</strong> {scriptTimeline[activeMinute].objective}
+              <div className="text-xs text-[#aeb5b2] bg-[#20272b] px-3.5 py-1.5 border border-white/10 font-mono">
+                <strong className="text-[#f5f0e7]">Objective:</strong> {scriptTimeline[activeMinute].objective}
               </div>
             </div>
 
             {/* Script Box */}
             <div className="space-y-2">
-              <span className="text-xs font-bold text-primary uppercase tracking-wider">
+              <span className="text-xs font-mono font-bold text-[#e7a45c] uppercase tracking-wider">
                 Verbatim Sales Pitch Script (Speak Word-for-Word):
               </span>
-              <div className="p-4 rounded-xl bg-neutral-900/90 border border-neutral-700/80 text-sm text-neutral-100 font-sans leading-relaxed italic border-l-4 border-l-primary">
+              <div className="p-5 bg-[#20272b] border border-white/10 text-sm sm:text-base text-[#f5f0e7] font-display italic leading-relaxed border-l-4 border-l-[#e7a45c]">
                 {scriptTimeline[activeMinute].script}
               </div>
             </div>
 
             {/* Practical Action & Anticipated Reaction */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
-              <div className="p-4 rounded-xl bg-neutral-900/50 border border-neutral-700/60 space-y-1">
-                <span className="font-bold text-emerald-400 uppercase tracking-wider text-[10px]">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs font-mono">
+              <div className="p-4 bg-[#20272b] border border-white/10 space-y-1.5">
+                <span className="font-bold text-emerald-400 uppercase tracking-wider text-[10px] block">
                   Physical Action on Screen:
                 </span>
-                <p className="text-neutral-300">{scriptTimeline[activeMinute].action}</p>
+                <p className="text-[#aeb5b2] leading-relaxed">{scriptTimeline[activeMinute].action}</p>
               </div>
 
-              <div className="p-4 rounded-xl bg-neutral-900/50 border border-neutral-700/60 space-y-1">
-                <span className="font-bold text-amber-400 uppercase tracking-wider text-[10px]">
+              <div className="p-4 bg-[#20272b] border border-white/10 space-y-1.5">
+                <span className="font-bold text-[#e7a45c] uppercase tracking-wider text-[10px] block">
                   Anticipated Client Reaction:
                 </span>
-                <p className="text-neutral-300">{scriptTimeline[activeMinute].reaction}</p>
+                <p className="text-[#aeb5b2] leading-relaxed">{scriptTimeline[activeMinute].reaction}</p>
               </div>
             </div>
           </div>
@@ -237,12 +232,12 @@ export default function DemoScriptPage() {
 
         {/* Objection Handling Matrix */}
         <div className="space-y-4">
-          <div className="border-b border-neutral-800 pb-3">
-            <h3 className="text-lg font-bold font-heading flex items-center gap-2">
-              <HelpCircle className="w-5 h-5 text-primary" />
+          <div className="border-b border-white/10 pb-3">
+            <h3 className="text-2xl font-display text-[#f5f0e7] flex items-center gap-2">
+              <HelpCircle size={20} className="text-[#e7a45c]" />
               <span>Hardcore Objection Handling Matrix</span>
             </h3>
-            <p className="text-xs text-neutral-400 mt-0.5">
+            <p className="text-xs text-[#aeb5b2] mt-1">
               The four objections every manufacturing promoter will throw at you, and the exact kill-shot responses.
             </p>
           </div>
@@ -251,13 +246,13 @@ export default function DemoScriptPage() {
             {objections.map((obj, idx) => (
               <div
                 key={idx}
-                className="p-5 rounded-2xl bg-neutral-800/80 border border-neutral-700/80 space-y-3"
+                className="p-6 bg-[#171c1e] border border-white/10 space-y-3 shadow-xl"
               >
-                <div className="flex items-center gap-2 text-rose-400 font-bold text-sm">
-                  <AlertTriangle className="w-4 h-4 shrink-0" />
+                <div className="flex items-center gap-2 text-rose-400 font-medium text-sm font-mono">
+                  <AlertTriangle size={15} className="shrink-0" />
                   <span>{obj.objection}</span>
                 </div>
-                <p className="text-xs text-neutral-300 leading-relaxed">
+                <p className="text-xs text-[#aeb5b2] leading-relaxed">
                   {obj.response}
                 </p>
               </div>
@@ -266,36 +261,36 @@ export default function DemoScriptPage() {
         </div>
 
         {/* Financial ROI Calculator Strip */}
-        <div className="p-6 rounded-2xl bg-neutral-950 border border-neutral-800 space-y-4">
+        <div className="p-8 bg-[#171c1e] border border-white/10 space-y-5 shadow-xl">
           <div className="flex items-center justify-between">
             <div>
-              <span className="text-xs font-mono font-bold text-primary uppercase">
+              <span className="eyebrow text-[#e7a45c]">
                 Contract Sizing
               </span>
-              <h3 className="text-lg font-bold font-heading mt-0.5">
-                The MSME Business Case & Payback Formula
+              <h3 className="text-2xl font-display text-[#f5f0e7] mt-1">
+                The MSME Business Case & <em className="text-[#e7a45c]">Payback Formula</em>
               </h3>
             </div>
-            <span className="text-xs font-mono text-emerald-400 bg-emerald-950/80 border border-emerald-800 px-2.5 py-1 rounded-full">
+            <span className="text-xs font-mono text-emerald-400 bg-emerald-950/40 border border-emerald-500/30 px-3 py-1 font-bold">
               Payback: Under 30 Days
             </span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
-            <div className="p-4 rounded-xl bg-neutral-900 border border-neutral-800 space-y-1">
-              <div className="text-neutral-400">Saved Engineering Hours</div>
-              <div className="text-xl font-bold font-mono text-white">40h / month</div>
-              <div className="text-[11px] text-neutral-500">Auto-BOM & CAD extraction</div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs font-mono">
+            <div className="p-5 bg-[#20272b] border border-white/10 space-y-1">
+              <div className="text-[#7e8989] text-[11px] uppercase">Saved Engineering Hours</div>
+              <div className="text-2xl font-bold text-[#f5f0e7]">40h / month</div>
+              <div className="text-[10px] text-[#aeb5b2]">Auto-BOM & CAD extraction</div>
             </div>
-            <div className="p-4 rounded-xl bg-neutral-900 border border-neutral-800 space-y-1">
-              <div className="text-neutral-400">Recovered Inbound Deals</div>
-              <div className="text-xl font-bold font-mono text-white">2 to 4 Deals / mo</div>
-              <div className="text-[11px] text-neutral-500">Prevented competitor leakage</div>
+            <div className="p-5 bg-[#20272b] border border-white/10 space-y-1">
+              <div className="text-[#7e8989] text-[11px] uppercase">Recovered Inbound Deals</div>
+              <div className="text-2xl font-bold text-[#f5f0e7]">2 to 4 Deals / mo</div>
+              <div className="text-[10px] text-[#aeb5b2]">Prevented competitor leakage</div>
             </div>
-            <div className="p-4 rounded-xl bg-neutral-900 border border-neutral-800 space-y-1">
-              <div className="text-neutral-400">Additional Annual Revenue</div>
-              <div className="text-xl font-bold font-mono text-primary font-bold">₹25L - ₹80L</div>
-              <div className="text-[11px] text-neutral-500">From high-velocity turnaround</div>
+            <div className="p-5 bg-[#20272b] border border-white/10 space-y-1">
+              <div className="text-[#7e8989] text-[11px] uppercase">Additional Annual Revenue</div>
+              <div className="text-2xl font-bold text-[#e7a45c]">₹25L - ₹80L</div>
+              <div className="text-[10px] text-[#aeb5b2]">From high-velocity turnaround</div>
             </div>
           </div>
         </div>

@@ -10,12 +10,10 @@ import {
   Scale,
   X,
   Plus,
-  ArrowRight,
   FileText,
   Clock,
-  Layers,
   ChevronRight,
-  CheckCircle2
+  ShieldCheck
 } from "lucide-react";
 import { formatCurrency } from "@/lib/utils";
 
@@ -26,37 +24,35 @@ export default function ProductComparePage() {
 
   // Collect all unique spec keys across compared products
   const allSpecKeys = Array.from(
-    new Set(comparedProducts.flatMap((p) => Object.keys(p.specs)))
+    new Set(comparedProducts.flatMap((p) => Object.keys(p.specs || {})))
   );
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#fafaf8]">
+    <div className="min-h-screen flex flex-col bg-[#20272b] text-[#f5f0e7]">
       <Navbar />
 
-      <main className="flex-1 py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <main className="flex-1 pt-28 pb-20 relative overflow-hidden">
+        <div className="max-w-[1440px] mx-auto px-5 md:px-10 lg:px-14 relative z-10">
           {/* Breadcrumb */}
-          <div className="flex items-center gap-1.5 text-xs text-stone-500 mb-6">
-            <Link href="/" className="hover:text-stone-900">
+          <div className="flex items-center gap-2 text-xs text-[#aeb5b2] font-mono mb-8">
+            <Link href="/" className="hover:text-[#e7a45c] transition-colors">
               Home
             </Link>
-            <ChevronRight className="w-3.5 h-3.5" />
-            <Link href="/products" className="hover:text-stone-900">
-              Products
+            <ChevronRight size={13} className="text-[#7e8989]" />
+            <Link href="/products" className="hover:text-[#e7a45c] transition-colors">
+              Components
             </Link>
-            <ChevronRight className="w-3.5 h-3.5" />
-            <span className="text-stone-900 font-semibold">Side-by-Side Comparison</span>
+            <ChevronRight size={13} className="text-[#7e8989]" />
+            <span className="text-[#f5f0e7] font-semibold">Side-by-Side Comparison</span>
           </div>
 
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between pb-6 border-b border-stone-200 mb-8 gap-4">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between pb-6 border-b border-white/10 mb-10 gap-4">
             <div>
-              <span className="text-xs font-bold uppercase tracking-widest text-[#d4560a]">
-                Decision Support Tool
-              </span>
-              <h1 className="text-3xl font-extrabold text-stone-900 tracking-tight mt-1">
-                Product Specification Comparison
+              <span className="eyebrow text-[#e7a45c]">Decision Support Tool</span>
+              <h1 className="text-4xl sm:text-5xl font-display tracking-tight text-[#f5f0e7] mt-2">
+                Component Specification <em className="text-[#e7a45c]">Comparison.</em>
               </h1>
-              <p className="text-xs sm:text-sm text-stone-600 mt-1">
+              <p className="text-xs sm:text-sm text-[#aeb5b2] mt-2">
                 Compare up to 3 industrial components side-by-side across dimensions, tolerances, materials, and lead times.
               </p>
             </div>
@@ -64,147 +60,170 @@ export default function ProductComparePage() {
             {comparedProducts.length > 0 && (
               <button
                 onClick={clearComparison}
-                className="px-3.5 py-1.5 rounded-lg border border-stone-300 text-stone-700 hover:bg-stone-100 text-xs font-semibold shrink-0"
+                className="text-xs font-mono text-[#e7a45c] hover:underline flex items-center gap-1 self-start sm:self-auto"
               >
-                Clear All ({comparedProducts.length})
+                Clear all comparisons ({comparedProducts.length})
               </button>
             )}
           </div>
 
           {comparedProducts.length === 0 ? (
-            /* Empty State */
-            <div className="text-center py-20 bg-white rounded-2xl border border-stone-200 p-8 max-w-lg mx-auto shadow-xs">
-              <div className="w-14 h-14 rounded-full bg-orange-50 text-[#d4560a] flex items-center justify-center mx-auto mb-4">
-                <Scale className="w-7 h-7" />
+            <div className="text-center py-20 bg-[#171c1e] border border-white/10 p-8 space-y-4">
+              <div className="size-16 border border-[#e7a45c] text-[#e7a45c] flex items-center justify-center mx-auto bg-[#20272b]">
+                <Scale size={28} />
               </div>
-              <h3 className="text-lg font-bold text-stone-900 mb-2">No Products in Comparison</h3>
-              <p className="text-xs text-stone-500 mb-6 leading-relaxed">
-                Add products from the catalogue or product detail pages using the &quot;Compare&quot; button to view technical specs side-by-side.
+              <h3 className="text-2xl font-display text-[#f5f0e7]">
+                No Components in Comparison Tray
+              </h3>
+              <p className="text-xs text-[#aeb5b2] max-w-sm mx-auto leading-relaxed">
+                Browse our precision catalog and click &quot;Compare&quot; on any product card to inspect technical tolerances side-by-side.
               </p>
-              <Link
-                href="/products"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#d4560a] text-white text-xs font-bold shadow-md hover:bg-[#b84605] transition-colors"
-              >
-                <span>Browse Products Catalogue</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
+              <div className="pt-4">
+                <Link
+                  href="/products"
+                  className="px-6 py-3.5 bg-[#e46e2e] hover:bg-[#f38b43] text-[#fff5e9] text-xs font-bold uppercase tracking-[.1em] transition-all font-mono inline-block"
+                >
+                  Browse Precision Catalog
+                </Link>
+              </div>
             </div>
           ) : (
-            /* Comparison Matrix Table */
-            <div className="bg-white rounded-2xl border border-stone-200 overflow-x-auto shadow-xs">
-              <table className="w-full text-xs text-left border-collapse min-w-[700px]">
-                <thead>
-                  <tr className="border-b border-stone-200 bg-stone-50">
-                    <th className="p-4 w-1/4 font-bold text-stone-500 uppercase tracking-wider text-[11px]">
-                      Product Details
-                    </th>
-                    {comparedProducts.map((p) => (
-                      <th key={p.id} className="p-4 w-1/4 align-top">
-                        <div className="relative">
-                          <button
-                            onClick={() => removeFromComparison(p.id)}
-                            className="absolute top-0 right-0 p-1 rounded-md text-stone-400 hover:text-rose-600 hover:bg-rose-50"
-                            title="Remove from comparison"
-                          >
-                            <X className="w-4 h-4" />
-                          </button>
-                          <div className="relative h-32 w-full rounded-lg overflow-hidden bg-stone-100 mb-2 border border-stone-200">
-                            <Image src={p.images[0]} alt={p.name} fill className="object-cover" />
-                          </div>
-                          <span className="text-[10px] font-mono text-stone-400 block">{p.sku}</span>
-                          <Link
-                            href={`/products/${p.slug}`}
-                            className="font-bold text-stone-900 text-xs hover:text-[#d4560a] line-clamp-2 mt-0.5"
-                          >
+            <div className="overflow-x-auto">
+              <div className="min-w-[800px] border border-white/10 bg-[#171c1e] shadow-2xl">
+                {/* Header Row: Products Info */}
+                <div className="grid grid-cols-4 border-b border-white/10 divide-x divide-white/10 bg-[#20272b]">
+                  <div className="p-5 flex flex-col justify-end">
+                    <span className="font-mono text-xs text-[#e7a45c] uppercase tracking-wider block">
+                      Component Spec Key
+                    </span>
+                    <span className="text-[11px] text-[#7e8989] font-mono mt-1">
+                      {comparedProducts.length} of 3 active
+                    </span>
+                  </div>
+
+                  {comparedProducts.map((p) => (
+                    <div key={p.id} className="p-5 relative flex flex-col justify-between space-y-3">
+                      <button
+                        onClick={() => removeFromComparison(p.id)}
+                        className="absolute top-3 right-3 text-[#7e8989] hover:text-[#e46e2e] p-1 transition-colors"
+                        title="Remove from comparison"
+                      >
+                        <X size={15} />
+                      </button>
+
+                      <div className="relative h-32 w-full overflow-hidden bg-[#171c1e] border border-white/10">
+                        <Image
+                          src={p.images[0]}
+                          alt={p.name}
+                          fill
+                          unoptimized={p.images[0].endsWith(".svg")}
+                          className="object-cover"
+                        />
+                      </div>
+
+                      <div>
+                        <span className="text-[10px] font-mono font-bold text-[#e7a45c] uppercase">
+                          {p.sku}
+                        </span>
+                        <Link href={`/products/${p.slug}`}>
+                          <h4 className="font-semibold text-xs text-[#f5f0e7] hover:text-[#e7a45c] line-clamp-2 transition-colors mt-0.5">
                             {p.name}
-                          </Link>
-                          <div className="mt-2 flex items-center justify-between">
-                            <span className="font-bold text-stone-900">
-                              {p.price ? formatCurrency(p.price) : p.priceMode}
-                            </span>
-                            <Link
-                              href={`/request-quote?productId=${p.id}`}
-                              className="px-2.5 py-1 bg-[#d4560a] text-white rounded text-[11px] font-semibold"
-                            >
-                              Quote
-                            </Link>
-                          </div>
-                        </div>
-                      </th>
-                    ))}
-                    {comparedProducts.length < 3 && (
-                      <th className="p-4 w-1/4 align-middle text-center bg-stone-50/50">
-                        <Link
-                          href="/products"
-                          className="flex flex-col items-center justify-center p-6 border-2 border-dashed border-stone-300 rounded-xl hover:border-stone-400 transition-colors text-stone-500 hover:text-stone-800"
-                        >
-                          <Plus className="w-6 h-6 mb-1 text-[#d4560a]" />
-                          <span className="font-semibold text-xs">Add Product</span>
-                          <span className="text-[10px] text-stone-400">Up to 3 products</span>
+                          </h4>
                         </Link>
-                      </th>
-                    )}
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-stone-100">
-                  {/* Category & Industry */}
-                  <tr>
-                    <td className="p-3.5 font-bold text-stone-500 bg-stone-50/50">Sector / Category</td>
-                    {comparedProducts.map((p) => (
-                      <td key={p.id} className="p-3.5 font-medium text-stone-800">
-                        {p.industryName} ({p.categoryName})
-                      </td>
-                    ))}
-                    {comparedProducts.length < 3 && <td className="bg-stone-50/30" />}
-                  </tr>
+                      </div>
 
-                  {/* MOQ */}
-                  <tr>
-                    <td className="p-3.5 font-bold text-stone-500 bg-stone-50/50">Minimum Order (MOQ)</td>
-                    {comparedProducts.map((p) => (
-                      <td key={p.id} className="p-3.5 font-bold text-stone-900">
-                        {p.moq}
-                      </td>
-                    ))}
-                    {comparedProducts.length < 3 && <td className="bg-stone-50/30" />}
-                  </tr>
-
-                  {/* Lead Time */}
-                  <tr>
-                    <td className="p-3.5 font-bold text-stone-500 bg-stone-50/50">Production Lead Time</td>
-                    {comparedProducts.map((p) => (
-                      <td key={p.id} className="p-3.5 text-stone-800 font-medium">
-                        {p.leadTime}
-                      </td>
-                    ))}
-                    {comparedProducts.length < 3 && <td className="bg-stone-50/30" />}
-                  </tr>
-
-                  {/* Dynamic Technical Specs */}
-                  {allSpecKeys.map((key) => (
-                    <tr key={key}>
-                      <td className="p-3.5 font-bold text-stone-500 bg-stone-50/50">{key}</td>
-                      {comparedProducts.map((p) => (
-                        <td key={p.id} className="p-3.5 text-stone-800">
-                          {p.specs[key] || "—"}
-                        </td>
-                      ))}
-                      {comparedProducts.length < 3 && <td className="bg-stone-50/30" />}
-                    </tr>
+                      <div className="pt-2">
+                        <Link
+                          href={`/request-quote?productId=${p.id}`}
+                          className="w-full py-2 bg-[#e46e2e] hover:bg-[#f38b43] text-[#fff5e9] text-[11px] font-bold uppercase tracking-[.08em] flex items-center justify-center gap-1.5 transition-colors font-mono"
+                        >
+                          <FileText size={12} />
+                          <span>Request Quote</span>
+                        </Link>
+                      </div>
+                    </div>
                   ))}
 
-                  {/* Customization */}
-                  <tr>
-                    <td className="p-3.5 font-bold text-stone-500 bg-stone-50/50">Customization</td>
+                  {/* Empty Slot if less than 3 */}
+                  {Array.from({ length: 3 - comparedProducts.length }).map((_, i) => (
+                    <div
+                      key={i}
+                      className="p-8 flex flex-col items-center justify-center text-center text-[#7e8989] space-y-2 border-dashed"
+                    >
+                      <Plus size={24} className="opacity-40" />
+                      <span className="text-xs font-mono">Empty slot</span>
+                      <Link
+                        href="/products"
+                        className="text-[11px] text-[#e7a45c] hover:underline font-mono"
+                      >
+                        Add component
+                      </Link>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Base Rows: Price & MOQ */}
+                <div className="grid grid-cols-4 border-b border-white/10 divide-x divide-white/10 text-xs font-mono">
+                  <div className="p-4 bg-[#20272b] text-[#899492] font-semibold">Pricing Model</div>
+                  {comparedProducts.map((p) => (
+                    <div key={p.id} className="p-4 text-[#f5f0e7]">
+                      {p.price ? (
+                        <span className="font-bold text-[#e7a45c]">
+                          {formatCurrency(p.price)} / {p.unit}
+                        </span>
+                      ) : (
+                        <span className="text-[#aeb5b2]">Custom CAD Quote</span>
+                      )}
+                    </div>
+                  ))}
+                  {Array.from({ length: 3 - comparedProducts.length }).map((_, i) => (
+                    <div key={i} className="p-4 bg-[#121618]" />
+                  ))}
+                </div>
+
+                <div className="grid grid-cols-4 border-b border-white/10 divide-x divide-white/10 text-xs font-mono">
+                  <div className="p-4 bg-[#20272b] text-[#899492] font-semibold">Minimum Order Quantity</div>
+                  {comparedProducts.map((p) => (
+                    <div key={p.id} className="p-4 text-[#f5f0e7] font-bold">
+                      {p.moq}
+                    </div>
+                  ))}
+                  {Array.from({ length: 3 - comparedProducts.length }).map((_, i) => (
+                    <div key={i} className="p-4 bg-[#121618]" />
+                  ))}
+                </div>
+
+                <div className="grid grid-cols-4 border-b border-white/10 divide-x divide-white/10 text-xs font-mono">
+                  <div className="p-4 bg-[#20272b] text-[#899492] font-semibold">Production Lead Time</div>
+                  {comparedProducts.map((p) => (
+                    <div key={p.id} className="p-4 text-[#e7a45c] flex items-center gap-1.5">
+                      <Clock size={12} />
+                      <span>{p.leadTime}</span>
+                    </div>
+                  ))}
+                  {Array.from({ length: 3 - comparedProducts.length }).map((_, i) => (
+                    <div key={i} className="p-4 bg-[#121618]" />
+                  ))}
+                </div>
+
+                {/* Dynamic Spec Rows */}
+                {allSpecKeys.map((key) => (
+                  <div
+                    key={key}
+                    className="grid grid-cols-4 border-b border-white/5 divide-x divide-white/10 text-xs font-mono hover:bg-white/[0.02] transition-colors"
+                  >
+                    <div className="p-4 bg-[#20272b] text-[#899492] font-semibold">{key}</div>
                     {comparedProducts.map((p) => (
-                      <td key={p.id} className="p-3.5 text-emerald-700 font-semibold">
-                        {p.customizationAvailable ? "✓ Custom Drawings Accepted" : "Standard Catalog Only"}
-                      </td>
+                      <div key={p.id} className="p-4 text-[#d2d1c9]">
+                        {p.specs?.[key] || <span className="text-[#7e8989]">—</span>}
+                      </div>
                     ))}
-                    {comparedProducts.length < 3 && <td className="bg-stone-50/30" />}
-                  </tr>
-                </tbody>
-              </table>
+                    {Array.from({ length: 3 - comparedProducts.length }).map((_, i) => (
+                      <div key={i} className="p-4 bg-[#121618]" />
+                    ))}
+                  </div>
+                ))}
+              </div>
             </div>
           )}
         </div>
