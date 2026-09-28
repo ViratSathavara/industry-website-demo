@@ -2,67 +2,158 @@
 
 import React from "react";
 import Link from "next/link";
-import { Factory, ArrowDown, ShieldCheck } from "lucide-react";
+import {
+  Factory,
+  ArrowUpRight,
+  Phone,
+  Mail,
+  MapPin,
+  ShieldCheck,
+  ChevronUp
+} from "lucide-react";
+
+const footerLinks = {
+  products: [
+    { label: "Submersible Motor Parts", href: "/products?cat=submersible" },
+    { label: "Pump Impellers & Bowls", href: "/products?cat=impellers" },
+    { label: "Rotor & Drive Shafts", href: "/products?cat=shafts" },
+    { label: "Stator Cores & Windings", href: "/products?cat=stators" },
+    { label: "Mechanical Seals", href: "/products?cat=seals" },
+    { label: "Motor Housings & Casings", href: "/products?cat=housings" }
+  ],
+  company: [
+    { label: "About Us", href: "/about" },
+    { label: "Manufacturing Process", href: "/manufacturing-process" },
+    { label: "Quality & Certifications", href: "/certifications" },
+    { label: "Applications", href: "/applications" },
+    { label: "Industries Served", href: "/industries" },
+    { label: "Contact / Plant Visit", href: "/contact" }
+  ],
+  portals: [
+    { label: "Buyer Portal", href: "/portal/dashboard" },
+    { label: "Request Quote (RFQ)", href: "/request-quote" },
+    { label: "Admin CRM", href: "/admin/dashboard" },
+    { label: "Product CRUD", href: "/admin/products" },
+    { label: "Demo Presentation", href: "/demo" },
+    { label: "Architecture Overview", href: "/overview" }
+  ]
+};
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="bg-[#20272b] px-5 py-12 text-[#f5f0e7] md:px-10 lg:px-14 border-t border-white/10">
-      <div className="mx-auto flex max-w-[1440px] flex-col justify-between gap-8 md:flex-row md:items-end">
-        <div>
-          <div className="flex items-center gap-3">
-            <span className="grid size-8 place-items-center border border-[#e7a45c] text-[#e7a45c]">
-              <Factory size={16} strokeWidth={1.5} />
+    <footer className="bg-[#171c1e] text-[#f4efe5] border-t border-white/8">
+      {/* Main Footer Grid */}
+      <div className="mx-auto max-w-[1440px] px-4 md:px-8 lg:px-12 py-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+
+        {/* Brand Block */}
+        <div className="lg:col-span-1">
+          <Link href="/" className="flex items-center gap-2.5 mb-5 group w-fit">
+            <span className="grid size-9 place-items-center border border-[#e7a45c]/50 bg-[#e7a45c]/10 text-[#e7a45c] rounded-sm">
+              <Factory size={16} strokeWidth={1.8} />
             </span>
-            <span className="font-mono text-[12px] tracking-[.22em] text-[#f5f0e7]">
-              INDUSTRIA
-            </span>
-          </div>
-          <p className="mt-4 max-w-sm text-xs leading-5 text-[#9fa8a6]">
-            Operating 140+ CNC & 5-axis milling centers with Zeiss 3D CMM metrology certified to IATF 16949 and AS9100D.
+            <div className="leading-none">
+              <span className="font-mono text-sm font-bold tracking-[.22em] text-[#f4efe5] block">INDUSTRIA</span>
+              <span className="text-[9px] tracking-widest text-[#7e8989] font-mono uppercase mt-0.5 block">Motor Parts</span>
+            </div>
+          </Link>
+
+          <p className="text-xs leading-5 text-[#7e8989] mb-5 max-w-[240px]">
+            Precision-manufactured water motor components for submersible pumps, agricultural irrigation, and industrial fluid systems.
           </p>
 
-          {/* Quick link directory */}
-          <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-[11px] font-mono uppercase tracking-[.1em] text-[#7e8989]">
-            <Link href="/products" className="hover:text-[#e7a45c] transition-colors">
-              Parts Catalog
-            </Link>
-            <Link href="/manufacturing-process" className="hover:text-[#e7a45c] transition-colors">
-              Machinery & Cells
-            </Link>
-            <Link href="/certifications" className="hover:text-[#e7a45c] transition-colors">
-              Quality Metrology
-            </Link>
-            <Link href="/about" className="hover:text-[#e7a45c] transition-colors">
-              Plant Infrastructure
-            </Link>
-            <Link href="/contact" className="hover:text-[#e7a45c] transition-colors">
-              Plant Visit
-            </Link>
-            <Link href="/request-quote" className="hover:text-[#e7a45c] transition-colors">
-              Instant CAD RFQ
-            </Link>
+          {/* Certifications badges */}
+          <div className="flex flex-wrap gap-2 mb-6">
+            {["ISO 9001:2015", "IS 9283", "EN 10204"].map((cert) => (
+              <span key={cert} className="inline-flex items-center gap-1 px-2 py-1 rounded-sm bg-white/4 border border-white/8 text-[9px] font-mono text-[#9fa8a6] uppercase tracking-wider">
+                <ShieldCheck size={9} className="text-[#e7a45c]" />
+                {cert}
+              </span>
+            ))}
+          </div>
+
+          {/* Contact block */}
+          <div className="space-y-2">
+            <a href="tel:+919876543210" className="flex items-center gap-2 text-xs text-[#9fa8a6] hover:text-[#e7a45c] transition-colors group">
+              <Phone size={12} className="text-[#e7a45c] shrink-0" />
+              +91 98765 43210
+            </a>
+            <a href="mailto:sales@industriamotorparts.in" className="flex items-center gap-2 text-xs text-[#9fa8a6] hover:text-[#e7a45c] transition-colors">
+              <Mail size={12} className="text-[#e7a45c] shrink-0" />
+              sales@industriamotorparts.in
+            </a>
+            <div className="flex items-start gap-2 text-xs text-[#9fa8a6]">
+              <MapPin size={12} className="text-[#e7a45c] shrink-0 mt-0.5" />
+              <span>Plot 42, Sanand GIDC Phase II,<br />Ahmedabad 382110, Gujarat, India</span>
+            </div>
           </div>
         </div>
 
-        <div className="text-left md:text-right">
-          <div className="inline-flex items-center gap-2 mb-2 font-mono text-[10px] text-[#e7a45c]">
-            <ShieldCheck size={13} />
-            <span>IATF 16949 & AS9100D Certified</span>
-          </div>
-          <p className="font-mono text-[10px] uppercase tracking-[.13em] text-[#e7a45c]">
-            Demo Signal / 2024–25
-          </p>
-          <p className="mt-1 text-xs text-[#9fa8a6]">
-            Sanand GIDC Phase II · Ahmedabad · Gujarat, India
-          </p>
+        {/* Products Links */}
+        <div>
+          <h3 className="text-[10px] font-mono uppercase tracking-[.18em] text-[#e7a45c] mb-4">Products</h3>
+          <ul className="space-y-2.5">
+            {footerLinks.products.map((l) => (
+              <li key={l.href}>
+                <Link href={l.href} className="text-xs text-[#7e8989] hover:text-[#e7a45c] transition-colors leading-none">
+                  {l.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Company Links */}
+        <div>
+          <h3 className="text-[10px] font-mono uppercase tracking-[.18em] text-[#e7a45c] mb-4">Company</h3>
+          <ul className="space-y-2.5">
+            {footerLinks.company.map((l) => (
+              <li key={l.href}>
+                <Link href={l.href} className="text-xs text-[#7e8989] hover:text-[#e7a45c] transition-colors leading-none">
+                  {l.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Portals & CTA */}
+        <div>
+          <h3 className="text-[10px] font-mono uppercase tracking-[.18em] text-[#e7a45c] mb-4">Quick Access</h3>
+          <ul className="space-y-2.5 mb-6">
+            {footerLinks.portals.map((l) => (
+              <li key={l.href}>
+                <Link href={l.href} className="text-xs text-[#7e8989] hover:text-[#e7a45c] transition-colors leading-none">
+                  {l.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+          {/* RFQ CTA */}
+          <Link
+            href="/request-quote"
+            className="inline-flex items-center gap-2 bg-[#e46e2e] hover:bg-[#f07d3e] text-white px-4 py-2.5 text-xs font-bold uppercase tracking-wider rounded-sm transition-all shadow-lg shadow-[#e46e2e]/15 w-full justify-center"
+          >
+            <span>Request a Quote</span>
+            <ArrowUpRight size={13} />
+          </Link>
         </div>
       </div>
 
-      <div className="mx-auto mt-10 flex max-w-[1440px] justify-between border-t border-white/10 pt-5 font-mono text-[9px] uppercase tracking-[.13em] text-[#7e8989]">
-        <span>© INDUSTRIA Precision Manufacturing · All rights reserved</span>
-        <a href="#top" className="flex items-center gap-2 hover:text-[#e7a45c] transition-colors">
-          Back to top <ArrowDown size={12} className="rotate-180" />
-        </a>
+      {/* Bottom Bar */}
+      <div className="border-t border-white/8">
+        <div className="mx-auto max-w-[1440px] px-4 md:px-8 lg:px-12 py-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <span className="text-[10px] font-mono uppercase tracking-[.12em] text-[#4a5555]">
+            © 2025 INDUSTRIA Motor Parts · Sanand GIDC, Gujarat · All rights reserved
+          </span>
+          <a
+            href="#top"
+            className="inline-flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-wider text-[#4a5555] hover:text-[#e7a45c] transition-colors"
+          >
+            Back to top
+            <ChevronUp size={12} />
+          </a>
+        </div>
       </div>
     </footer>
   );
