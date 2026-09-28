@@ -81,7 +81,7 @@ export default function ProductDetailPage() {
                   alt={product.name}
                   fill
                   priority
-                  unoptimized={(product.images[activeImageIndex] || product.images[0]).endsWith(".svg")}
+                  unoptimized={Boolean((product.images[activeImageIndex] || product.images[0])?.endsWith(".svg"))}
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover"
                 />

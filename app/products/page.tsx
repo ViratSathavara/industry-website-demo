@@ -372,10 +372,10 @@ export default function ProductsCataloguePage() {
                         {/* Thumbnail */}
                         <div className="relative h-48 w-full bg-[#20272b] overflow-hidden">
                           <Image
-                            src={p.images[0]}
+                            src={p.images[0] || "https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=1000&q=80"}
                             alt={p.name}
                             fill
-                            unoptimized={p.images[0].endsWith(".svg")}
+                            unoptimized={Boolean(p.images[0]?.endsWith(".svg"))}
                             sizes="(max-width: 768px) 100vw, 33vw"
                             className="object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100"
                           />

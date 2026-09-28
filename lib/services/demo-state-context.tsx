@@ -87,12 +87,15 @@ interface DemoStateContextType {
   submitSampleRequest: (data: Omit<SampleRequest, "id" | "requestNumber" | "status" | "createdAt">) => SampleRequest;
   markNotificationAsRead: (id: string) => void;
   addProduct: (product: Product) => void;
+  updateProduct: (product: Product) => void;
+  deleteProduct: (id: string) => void;
   resetDemoData: () => void;
 }
 
 const DemoStateContext = createContext<DemoStateContextType | null>(null);
 
 const STORAGE_KEYS = {
+  PRODUCTS: "industria_products_catalog",
   INDUSTRY: "industria_selected_industry",
   LANG: "industria_language",
   ROLE: "industria_user_role",
@@ -155,11 +158,14 @@ export const DemoStateProvider: React.FC<{ children: React.ReactNode }> = ({ chi
   const [messages, setMessages] = useState<PortalMessage[]>(mockMessages);
   const [notifications, setNotifications] = useState<NotificationItem[]>(initialNotifications);
   const [activityTimeline, setActivityTimeline] = useState<ActivityTimelineItem[]>(mockActivityTimeline);
-  const [customProducts, setCustomProducts] = useState<Product[]>([]);
+  const [products, setProducts] = useState<Product[]>(mockProducts);
 
   // Load from LocalStorage on mount
   useEffect(() => {
     try {
+      const storedProducts = localStorage.getItem(STORAGE_KEYS.PRODUCTS);
+      if (storedProducts) setProducts(JSON.parse(storedProducts));
+
       const storedIndustry = localStorage.getItem(STORAGE_KEYS.INDUSTRY);
       if (storedIndustry) setSelectedIndustryIdState(storedIndustry);
 
@@ -311,6 +317,15 @@ export const DemoStateProvider: React.FC<{ children: React.ReactNode }> = ({ chi
     };
     setNotifications((prev) => [newNotif, ...prev]);
 
+    // Dispatch to background API for real SMTP email notification and Google Sheets sync
+    try {
+      fetch("/api/inquiries", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newEnquiry)
+      }).catch((e) => console.warn("Background inquiry API dispatch:", e));
+    } catch {}
+
     return newEnquiry;
   };
 
@@ -353,6 +368,26 @@ export const DemoStateProvider: React.FC<{ children: React.ReactNode }> = ({ chi
       link: "/portal/rfqs"
     };
     setNotifications((prev) => [newNotif, ...prev]);
+
+    // Dispatch to background API for real SMTP email notification and Google Sheets sync
+    try {
+      fetch("/api/inquiries", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          enquiryNumber: newRFQ.rfqNumber,
+          customerName: newRFQ.contactPerson,
+          company: newRFQ.companyName,
+          phone: newRFQ.phone,
+          email: newRFQ.email,
+          productInterest: `RFQ: ${newRFQ.items.map((i) => i.productName).join(", ")}`,
+          urgency: newRFQ.targetDate ? "Urgent" : "Normal",
+          message: `Target Date: ${newRFQ.targetDate || "Standard"}. Items: ${newRFQ.items.length}. Notes: ${newRFQ.notes || "None"}`,
+          source: "RFQ",
+          location: "Sanand GIDC"
+        })
+      }).catch((e) => console.warn("Background RFQ dispatch:", e));
+    } catch {}
 
     return newRFQ;
   };
@@ -482,6 +517,15 @@ export const DemoStateProvider: React.FC<{ children: React.ReactNode }> = ({ chi
     };
     setNotifications((prev) => [newNotif, ...prev]);
 
+    // Dispatch to background API for real SMTP calendar email and Google Sheets sync
+    try {
+      fetch("/api/bookings", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newApt)
+      }).catch((e) => console.warn("Background booking dispatch:", e));
+    } catch {}
+
     return newApt;
   };
 
@@ -521,6 +565,27 @@ export const DemoStateProvider: React.FC<{ children: React.ReactNode }> = ({ chi
       read: false
     };
     setNotifications((prev) => [newNotif, ...prev]);
+
+    // Dispatch to background API for real SMTP notification and Google Sheets sync
+    try {
+      fetch("/api/inquiries", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          enquiryNumber: newSample.requestNumber,
+          customerName: newSample.contactName,
+          company: newSample.company,
+          phone: newSample.phone,
+          email: newSample.email,
+          productInterest: `Sample Request: ${newSample.productName} (${newSample.quantity} pcs)`,
+          urgency: "High",
+          message: `Sample request for ${newSample.productName}. Shipping Address: ${newSample.shippingAddress}. Notes: ${newSample.message || "Standard sample evaluation"}`,
+          source: "Sample",
+          location: "Sanand GIDC"
+        })
+      }).catch((e) => console.warn("Background sample dispatch:", e));
+    } catch {}
+
     return newSample;
   };
 
@@ -529,7 +594,33 @@ export const DemoStateProvider: React.FC<{ children: React.ReactNode }> = ({ chi
   };
 
   const addProduct = (prod: Product) => {
-    setCustomProducts((prev) => [prod, ...prev]);
+    setProducts((prev) => {
+      const updated = [prod, ...prev];
+      try {
+        localStorage.setItem(STORAGE_KEYS.PRODUCTS, JSON.stringify(updated));
+      } catch {}
+      return updated;
+    });
+  };
+
+  const updateProduct = (updatedProd: Product) => {
+    setProducts((prev) => {
+      const updated = prev.map((p) => (p.id === updatedProd.id ? updatedProd : p));
+      try {
+        localStorage.setItem(STORAGE_KEYS.PRODUCTS, JSON.stringify(updated));
+      } catch {}
+      return updated;
+    });
+  };
+
+  const deleteProduct = (id: string) => {
+    setProducts((prev) => {
+      const updated = prev.filter((p) => p.id !== id);
+      try {
+        localStorage.setItem(STORAGE_KEYS.PRODUCTS, JSON.stringify(updated));
+      } catch {}
+      return updated;
+    });
   };
 
   const resetDemoData = () => {
@@ -550,12 +641,11 @@ export const DemoStateProvider: React.FC<{ children: React.ReactNode }> = ({ chi
     setMessages(mockMessages);
     setNotifications(initialNotifications);
     setActivityTimeline(mockActivityTimeline);
+    setProducts(mockProducts);
   };
 
   const selectedIndustry =
     mockIndustries.find((i) => i.id === selectedIndustryId) || mockIndustries[0];
-
-  const allProducts = [...customProducts, ...mockProducts];
 
   return (
     <DemoStateContext.Provider
@@ -578,7 +668,7 @@ export const DemoStateProvider: React.FC<{ children: React.ReactNode }> = ({ chi
         toggleSaveProduct,
         industries: mockIndustries,
         categories: mockCategories,
-        products: allProducts,
+        products,
         customers: mockCustomers,
         leads,
         enquiries,
@@ -600,6 +690,8 @@ export const DemoStateProvider: React.FC<{ children: React.ReactNode }> = ({ chi
         submitSampleRequest,
         markNotificationAsRead,
         addProduct,
+        updateProduct,
+        deleteProduct,
         resetDemoData
       }}
     >

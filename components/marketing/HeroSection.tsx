@@ -3,44 +3,44 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight, ShieldCheck, Cpu } from "lucide-react";
+import { ArrowRight, ArrowUpRight, ShieldCheck, Cpu, CheckCircle2, TrendingUp, Bell } from "lucide-react";
 
 export const HeroSection: React.FC = () => {
   const [activeComponentIdx, setActiveComponentIdx] = useState(0);
 
   const heroComponents = [
     {
-      name: "5-Axis Gas Turbine Closed Impeller",
-      sku: "PRC-5AX-IMP718",
-      material: "Titanium Grade 5 (Ti-6Al-4V)",
-      tolerance: "±0.005 mm (5 Microns)",
-      spindle: "18,000 RPM Continuous",
-      surface: "Ra 0.4 µm Superfinished",
-      qa: "100% Zeiss 3D CMM & ISO 1940 Balancing",
-      image: "/images/components/impeller-5axis.svg",
-      slug: "5-axis-cnc-machined-turbine-impeller"
+      name: "V6 Submersible Water Motor Stator & Rotor Assembly",
+      sku: "WTR-MTR-V6-15HP",
+      material: "SS304 Shell + 100% EC Grade Copper",
+      tolerance: "Bearing Journal Runout < 0.003 mm",
+      speed: "2,880 RPM (50 Hz 415V AC)",
+      thrust: "Mitchell Carbon Thrust Bearing (25 kN)",
+      qa: "100% High-Voltage & Submersion Tested",
+      image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80",
+      slug: "v6-submersible-water-pump-motor-assembly"
     },
     {
-      name: "Precision Induction Spline Shaft",
-      sku: "PRC-TRN-SPL400",
-      material: "Alloy Steel EN353 (58-62 HRC)",
-      tolerance: "Journal Runout < 0.004 mm",
-      spindle: "CNC Turning & Cylindrical Grinding",
-      surface: "Ra 0.2 µm Bearing Seats",
-      qa: "DIN 5480 Involute Profile & PPAP L3",
-      image: "/images/components/spline-shaft.svg",
-      slug: "precision-induction-hardened-spline-shaft"
+      name: "Precision Bronze Water Pump Impeller",
+      sku: "WTR-IMP-BRZ180",
+      material: "Gunmetal Bronze LTB-2 / Forged Brass",
+      tolerance: "ISO 1940 Grade G1.0 Dynamic Balance",
+      speed: "3,000 RPM Rated Operating Speed",
+      thrust: "Hydraulic Backward-Curved Shrouded Vanes",
+      qa: "Cavitation & Optical Roughness Inspection",
+      image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80",
+      slug: "gunmetal-bronze-water-pump-impeller"
     },
     {
-      name: "Custom 4-Port Hydraulic Manifold",
-      sku: "PRC-HYD-MNF400",
-      material: "Ductile Iron GGG40 / 6061-T6 Al",
-      tolerance: "420 Bar (6,000 PSI) Proof Tested",
-      spindle: "Deep Hole Gun Drilling & TEM Deburring",
-      surface: "Zero Cross-Port Leakage",
-      qa: "ISO 4406 Cleanliness & Hydrostatic Cert",
-      image: "/images/components/manifold-block.svg",
-      slug: "high-pressure-hydraulic-manifold-block"
+      name: "Cast Iron Monoblock Volute Casing",
+      sku: "WTR-CSG-VOL200",
+      material: "High-Grade Cast Iron FG 260",
+      tolerance: "16 Bar Sustained Hydrostatic Test",
+      speed: "Precision CNC Face-Turned Spigot",
+      thrust: "Anti-Corrosion Drinking Water Coating",
+      qa: "100% Pressure Decay & Wall Thickness CMM",
+      image: "https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=800&q=80",
+      slug: "cast-iron-monoblock-pump-volute-casing"
     }
   ];
 
@@ -54,66 +54,107 @@ export const HeroSection: React.FC = () => {
       {/* Background Image */}
       <div className="absolute inset-0 size-full">
         <Image
-          src="/industrial-hero.jpg"
-          alt="CNC machining centre in a modern Indian factory"
+          src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1800&q=80"
+          alt="Precision Water Motor & Pump Manufacturing Plant"
           fill
           priority
           sizes="100vw"
-          className="object-cover opacity-45"
+          className="object-cover opacity-25"
         />
       </div>
 
       {/* Gradients and 90x90px Grid Overlay */}
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(23,28,30,.98)_0%,rgba(23,28,30,.80)_48%,rgba(23,28,30,.25)_100%)]" />
-      <div className="absolute inset-0 opacity-20 [background-image:linear-gradient(rgba(255,255,255,.14)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.14)_1px,transparent_1px)] [background-size:90px_90px]" />
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(23,28,30,.98)_0%,rgba(23,28,30,.85)_50%,rgba(23,28,30,.40)_100%)]" />
+      <div className="absolute inset-0 opacity-15 [background-image:linear-gradient(rgba(255,255,255,.14)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.14)_1px,transparent_1px)] [background-size:90px_90px]" />
 
       {/* Hero Content */}
-      <div className="relative mx-auto flex min-h-[780px] max-w-[1440px] flex-col justify-end px-5 pb-16 pt-32 md:min-h-[860px] md:px-10 md:pb-24 lg:px-14">
+      <div className="relative mx-auto flex min-h-[780px] max-w-[1440px] flex-col justify-end px-5 pb-16 pt-36 md:min-h-[860px] md:px-10 md:pb-24 lg:px-14">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-end">
           {/* Left Column: Vision & Actions */}
-          <div className="lg:col-span-8 max-w-3xl">
-            <div className="reveal mb-6 flex flex-wrap items-center gap-3 text-[#e7a45c]">
+          <div className="lg:col-span-7 max-w-3xl">
+            <div className="mb-6 flex flex-wrap items-center gap-3 text-[#e7a45c]">
               <span className="h-px w-10 bg-[#e7a45c]" />
-              <span className="eyebrow">5-Axis CNC Machining & Micron Metrology · 01 / 05</span>
+              <span className="font-mono text-xs uppercase tracking-widest text-[#e7a45c]">
+                Industrial Water Motor Parts & Fluid Equipment · 01 / 05
+              </span>
               <span className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-0.5 border border-[#e7a45c]/30 text-[10px] font-mono text-[#e7a45c] bg-white/5">
                 <ShieldCheck size={12} />
-                IATF 16949 & AS9100D
+                ISI / BIS & ISO 9001:2015
               </span>
             </div>
 
-            <h1 className="reveal reveal-1 font-display text-[clamp(3.2rem,7vw,7.6rem)] leading-[.88] tracking-[-.045em] text-balance">
-              High-Tolerance CNC Machining & <em className="text-[#e7a45c]">Critical Assemblies.</em>
+            <h1 className="font-display text-[clamp(2.8rem,6vw,6.5rem)] leading-[.92] tracking-[-.04em] text-balance">
+              Your factory deserves more than a <em className="text-[#e7a45c]">phone number.</em>
             </h1>
 
-            <p className="reveal reveal-2 mt-7 max-w-2xl text-base leading-7 text-[#d2d1c9] md:text-lg">
-              Operating 140+ DMG Mori & Mazak multi-axis machining centers with Zeiss 3D CMM metrology certified to IATF 16949 and AS9100D. Delivering flight-critical blisks, drivetrain splines, and 420 Bar manifold blocks.
+            <p className="mt-6 max-w-2xl text-base leading-7 text-[#d2d1c9] md:text-lg">
+              Turn your industrial water motor parts, submersible pump assemblies, and factory capabilities into a digital sales engine that captures RFQs, prepares instant quotations, and manages orders 24/7.
             </p>
 
-            <div className="reveal reveal-3 mt-9 flex flex-col gap-3 sm:flex-row">
-              <a
-                href="#parts"
-                className="group inline-flex items-center justify-center gap-3 bg-[#e46e2e] px-5 py-3.5 text-sm font-semibold text-[#fff5e9] transition-all hover:bg-[#f38b43]"
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+              <Link
+                href="/products"
+                className="group inline-flex items-center justify-center gap-3 bg-[#e46e2e] px-6 py-3.5 text-sm font-semibold text-[#fff5e9] transition-all hover:bg-[#f38b43] shadow-lg"
               >
-                Explore Precision Components{" "}
+                Explore Digital Factory{" "}
                 <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
-              </a>
+              </Link>
               <Link
                 href="/request-quote"
-                className="inline-flex items-center justify-center gap-3 border border-white/30 px-5 py-3.5 text-sm font-semibold text-[#f4efe5] transition-colors hover:border-[#e7a45c] hover:text-[#e7a45c]"
+                className="inline-flex items-center justify-center gap-3 border border-white/30 px-6 py-3.5 text-sm font-semibold text-[#f4efe5] transition-colors hover:border-[#e7a45c] hover:text-[#e7a45c]"
               >
-                Instant CAD Feasibility RFQ <ArrowUpRight size={16} />
+                Request a Quote <ArrowUpRight size={16} />
               </Link>
+            </div>
+
+            {/* Quick Metrics Bar */}
+            <div className="mt-10 grid grid-cols-3 gap-4 pt-6 border-t border-white/10 font-mono text-xs text-[#aeb5b2]">
+              <div>
+                <div className="text-xl font-bold text-[#f4efe5]">45,000+</div>
+                <div className="text-[11px] text-[#7e8989] mt-0.5">Motor Parts / Month</div>
+              </div>
+              <div>
+                <div className="text-xl font-bold text-[#e7a45c]">&lt; 0.003mm</div>
+                <div className="text-[11px] text-[#7e8989] mt-0.5">Shaft Grinding TIR</div>
+              </div>
+              <div>
+                <div className="text-xl font-bold text-[#f4efe5]">16 Bar</div>
+                <div className="text-[11px] text-[#7e8989] mt-0.5">Hydrostatic Proof Test</div>
+              </div>
             </div>
           </div>
 
           {/* Right Column: Live Interactive CAD Component Card */}
-          <div className="lg:col-span-4 hidden lg:block">
-            <div className="border border-white/20 bg-[#20272b]/85 p-5 backdrop-blur-md space-y-4">
+          <div className="lg:col-span-5 hidden lg:block space-y-4">
+            {/* Live Floating Enquiry Toast Card */}
+            <div className="bg-[#171c1e]/90 border border-white/15 p-3 rounded shadow-xl flex items-center gap-3 backdrop-blur-md animate-fade-in font-mono text-xs">
+              <div className="w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
+                <Bell size={14} />
+              </div>
+              <div className="flex-1 truncate">
+                <div className="text-[#f4efe5] font-semibold flex items-center gap-1.5">
+                  <span>New RFQ Received</span>
+                  <span className="size-1.5 rounded-full bg-emerald-400 animate-ping" />
+                </div>
+                <div className="text-[11px] text-[#7e8989] truncate">
+                  Aarav Agri Equipment Ltd. • 250 pcs V6 Submersible Stator Assemblies
+                </div>
+              </div>
+              <span className="text-[10px] text-[#e7a45c] bg-white/5 px-2 py-0.5 border border-white/10 shrink-0">
+                Just Now
+              </span>
+            </div>
+
+            {/* Component Blueprint Card */}
+            <div className="border border-white/20 bg-[#20272b]/95 p-5 backdrop-blur-md space-y-4 shadow-2xl">
               <div className="flex items-center justify-between border-b border-white/10 pb-3 text-[10px] uppercase font-mono tracking-[.1em] text-[#aeb5b2]">
-                <span>Component Blueprints</span>
+                <span className="flex items-center gap-1.5">
+                  <Cpu size={12} className="text-[#e7a45c]" />
+                  Water Motor Engineering Blueprint
+                </span>
                 <span className="text-[#e7a45c] flex items-center gap-1">
                   <span className="size-1.5 rounded-full bg-[#e7a45c] animate-pulse" />
-                  Live CAD
+                  Live Spec
                 </span>
               </div>
 
@@ -129,80 +170,56 @@ export const HeroSection: React.FC = () => {
                         : "border-white/10 text-[#899492] hover:border-white/20 hover:text-[#f4efe5]"
                     }`}
                   >
-                    0{i + 1} {c.sku.split("-")[2]}
+                    0{i + 1} {c.sku.split("-")[1]}
                   </button>
                 ))}
               </div>
 
-              {/* Vector Blueprint Preview */}
-              <div className="relative h-44 w-full bg-[#171c1e] border border-white/10 overflow-hidden flex items-center justify-center p-3">
+              {/* Real Photo Preview */}
+              <div className="relative h-48 w-full bg-[#171c1e] border border-white/10 overflow-hidden group">
                 <Image
                   src={current.image}
                   alt={current.name}
                   fill
-                  unoptimized
-                  className="object-contain p-2"
+                  sizes="400px"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <span className="absolute bottom-2 left-2 font-mono text-[9px] text-[#e7a45c] bg-[#20272b]/90 px-1.5 py-0.5 border border-[#e7a45c]/30">
+                <div className="absolute inset-0 bg-gradient-to-t from-[#171c1e] via-transparent to-transparent opacity-80" />
+                <span className="absolute bottom-2 left-3 font-mono text-[11px] font-bold text-[#e7a45c] bg-[#20272b]/90 px-2 py-0.5 border border-[#e7a45c]/30">
                   {current.sku}
                 </span>
               </div>
 
-              {/* Quick Specs */}
+              {/* Spec Details Table */}
               <div className="space-y-1.5 font-mono text-[11px]">
-                <div className="flex justify-between text-[#d2d1c9]">
+                <div className="font-semibold text-sm text-[#f4efe5] truncate font-sans">
+                  {current.name}
+                </div>
+                <div className="flex justify-between text-[#d2d1c9] border-b border-white/5 pb-1">
                   <span className="text-[#7e8989]">Material:</span>
-                  <span className="text-[#f4efe5] truncate max-w-[170px]">{current.material}</span>
+                  <span className="font-medium text-[#f4efe5]">{current.material}</span>
                 </div>
-                <div className="flex justify-between text-[#d2d1c9]">
+                <div className="flex justify-between text-[#d2d1c9] border-b border-white/5 pb-1">
                   <span className="text-[#7e8989]">Tolerance:</span>
-                  <span className="text-[#e7a45c] font-bold">{current.tolerance}</span>
+                  <span className="font-medium text-[#e7a45c]">{current.tolerance}</span>
                 </div>
                 <div className="flex justify-between text-[#d2d1c9]">
-                  <span className="text-[#7e8989]">Finish:</span>
-                  <span className="text-[#f4efe5]">{current.surface}</span>
+                  <span className="text-[#7e8989]">Inspection:</span>
+                  <span className="font-medium text-[#f4efe5] truncate max-w-[200px]">{current.qa}</span>
                 </div>
               </div>
 
-              <Link
-                href={`/products/${current.slug}`}
-                className="block text-center py-2.5 bg-[#e46e2e] hover:bg-[#f38b43] text-[#fff5e9] text-[11px] font-mono font-semibold uppercase tracking-[.1em] transition-colors"
-              >
-                Inspect 3D CAD Specs →
-              </Link>
+              <div className="pt-2">
+                <Link
+                  href={`/products/${current.slug}`}
+                  className="flex items-center justify-center gap-1.5 py-2 w-full bg-white/10 hover:bg-[#e46e2e] text-xs font-mono font-bold uppercase transition-colors text-white border border-white/10"
+                >
+                  <span>View Part Specifications</span>
+                  <ArrowUpRight size={13} />
+                </Link>
+              </div>
             </div>
           </div>
-        </div>
-
-        {/* Telemetry Strip */}
-        <div className="mt-14 flex flex-wrap items-end justify-between gap-8 border-t border-white/20 pt-5 text-[11px] text-[#b7b6ae]">
-          <div className="flex items-center gap-3">
-            <span className="size-2 bg-[#e7a45c]" />
-            <span className="font-mono uppercase tracking-[.13em]">
-              142 / 144 CNC Centers Online · 98.6% OEE · IATF 16949 & AS9100D Certified
-            </span>
-          </div>
-          <div className="font-mono uppercase tracking-[.13em] text-[#b7b6ae]">
-            22.98° N · 72.38° E / Sanand GIDC, Gujarat, India
-          </div>
-        </div>
-      </div>
-
-      {/* Floating Live Signal Card (Mobile & Tablet) */}
-      <div className="absolute bottom-20 right-5 hidden w-[260px] border border-white/20 bg-[#20272b]/85 p-4 backdrop-blur-md xl:block xl:right-14">
-        <div className="mb-4 flex items-center justify-between text-[10px] uppercase tracking-[.13em] text-[#c3c1b7]">
-          <span>Fleet Telemetry</span>
-          <span className="flex items-center gap-1.5 text-[#e7a45c]">
-            <span className="size-1.5 animate-pulse rounded-full bg-[#e7a45c]" /> online
-          </span>
-        </div>
-        <p className="font-display text-3xl leading-none text-[#f5eee3]">
-          140+ <span className="text-lg italic text-[#e7a45c]">CNC Centers</span>
-        </p>
-        <div className="mt-4 grid grid-cols-3 gap-2 border-t border-white/15 pt-3 font-mono text-[9px] uppercase tracking-[.08em] text-[#9eaaa9]">
-          <span>±0.005 mm</span>
-          <span>Ra 0.2 µm</span>
-          <span>420 Bar</span>
         </div>
       </div>
     </section>

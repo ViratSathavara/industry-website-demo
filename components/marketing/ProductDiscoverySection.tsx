@@ -13,11 +13,12 @@ export const ProductDiscoverySection: React.FC = () => {
 
   const categories = [
     "All parts",
+    "Electric Motor Rotors & Ground Shafts",
+    "Motor Stators, Cores & Laminations",
+    "Motor Housings, End Shields & Castings",
+    "Motor Pinions, Reduction Hubs & Commutators",
     "High-Pressure Flanges & Forgings",
-    "5-Axis CNC Milling",
-    "Precision Turning & Drivetrain",
-    "Hydraulic Manifolds & Blocks",
-    "Aerospace Actuation & Bushings"
+    "5-Axis Complex Machined Parts"
   ];
 
   const filteredProducts = useMemo(() => {
@@ -45,11 +46,11 @@ export const ProductDiscoverySection: React.FC = () => {
           <div>
             <span className="eyebrow text-[#bb5b2c]">Parts index / 04</span>
             <h2 className="mt-5 font-display text-[clamp(3rem,6vw,6.1rem)] leading-[.9] tracking-[-.04em] text-[#20272b]">
-              Start with the <em className="text-[#bb5b2c]">part.</em>
+              Start with the <em className="text-[#bb5b2c]">motor part.</em>
             </h2>
           </div>
           <p className="max-w-sm text-sm leading-6 text-[#687173]">
-            Production-verified 5-axis milled components, drivetrain splines, ASME flanges, and hydraulic blocks calibrated to ±0.005mm limits.
+            High-speed EV rotor shafts, CRGO stator cores, B5/B14 end shields, extruded aluminum cooling housings, and carburized reduction pinions calibrated to DIN ISO tolerances.
           </p>
         </div>
 
@@ -96,9 +97,9 @@ export const ProductDiscoverySection: React.FC = () => {
                     src={p.images[0]}
                     alt={p.name}
                     fill
-                    unoptimized={p.images[0].endsWith(".svg")}
+                    unoptimized={Boolean(p.images[0]?.endsWith(".svg"))}
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="object-cover p-3 grayscale-[.25] transition-transform duration-700 group-hover:scale-105 group-hover:grayscale-0"
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   <span className="absolute left-3 top-3 bg-[#f5f0e7] px-2 py-1 font-mono text-[9px] uppercase tracking-[.1em] text-[#bb5b2c] font-bold">
                     {p.sku}
