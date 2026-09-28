@@ -21,7 +21,7 @@ import { Language } from "@/lib/types";
 
 export const Navbar: React.FC = () => {
   const pathname = usePathname();
-  const { language, setLanguage } = useDemoState();
+  const { language, setLanguage, t } = useDemoState();
 
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
@@ -68,13 +68,13 @@ export const Navbar: React.FC = () => {
   }, [menuOpen]);
 
   const navLinks = [
-    { label: "Products", href: "/products" },
-    { label: "Industries", href: "/industries" },
-    { label: "Applications", href: "/applications" },
-    { label: "Manufacturing", href: "/manufacturing-process" },
-    { label: "Quality & Certs", href: "/certifications" },
-    { label: "About", href: "/about" },
-    { label: "Contact", href: "/contact" }
+    { label: t.products, href: "/products" },
+    { label: t.industries, href: "/industries" },
+    { label: t.applications, href: "/applications" },
+    { label: t.manufacturing, href: "/manufacturing-process" },
+    { label: t.qualityCerts, href: "/certifications" },
+    { label: t.about, href: "/about" },
+    { label: t.contact, href: "/contact" }
   ];
 
   const languages: { code: Language; label: string; native: string }[] = [
@@ -197,7 +197,7 @@ export const Navbar: React.FC = () => {
               title="Search parts (Ctrl + K)"
             >
               <Search size={13} className="text-[#e7a45c]" />
-              <span className="hidden sm:inline text-[11px]">Search</span>
+              <span className="hidden sm:inline text-[11px]">{t.search}</span>
               <kbd className="hidden md:inline text-[9px] px-1 bg-white/8 rounded text-[#7e8989]">⌘K</kbd>
             </button>
 
@@ -235,8 +235,7 @@ export const Navbar: React.FC = () => {
               href="/request-quote"
               className="hidden sm:flex items-center gap-1.5 bg-[#e46e2e] hover:bg-[#f07d3e] text-white px-4 py-2 text-[11px] font-bold uppercase tracking-[.1em] transition-all shadow-lg shadow-[#e46e2e]/20 rounded-sm shrink-0"
             >
-              <span className="hidden md:inline">Request</span>
-              <span>Quote</span>
+              <span>{t.requestQuote}</span>
               <ArrowUpRight size={13} />
             </Link>
 
