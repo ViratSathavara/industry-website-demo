@@ -1,26 +1,113 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #fafaf8;
+    --foreground: #191918;
+    --surface: #ffffff;
+    --surface-subtle: #f4f4f1;
+    --surface-elevated: #ffffff;
+    --border: #e6e4dd;
+    --border-subtle: #eeece6;
+    
+    --primary: #d4560a;
+    --primary-hover: #b84605;
+    --primary-light: #fef2ea;
+    --primary-foreground: #ffffff;
+
+    --charcoal: #1f2123;
+    --charcoal-light: #2c2f33;
+    --muted: #6e706e;
+    --muted-light: #8e908e;
+
+    --success: #15803d;
+    --success-bg: #f0fdf4;
+    --warning: #b45309;
+    --warning-bg: #fffbeb;
+    --info: #1d4ed8;
+    --info-bg: #eff6ff;
+    --danger: #b91c1c;
+    --danger-bg: #fef2f2;
+  }
+
+  .dark {
+    --background: #121314;
+    --foreground: #f4f4f1;
+    --surface: #1a1b1d;
+    --surface-subtle: #222427;
+    --surface-elevated: #26282d;
+    --border: #2e3136;
+    --border-subtle: #24262a;
+
+    --primary: #e06218;
+    --primary-hover: #f0742b;
+    --primary-light: #2c1a0e;
+    --primary-foreground: #ffffff;
+
+    --charcoal: #e1e3e5;
+    --muted: #9ba0a6;
+    --muted-light: #6a6f75;
   }
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #d5d3cb;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #b5b3ab;
+}
+
+/* Subtle dot and grid patterns for industrial aesthetic */
+.bg-industrial-grid {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.035) 1px, transparent 1px);
+}
+
+.bg-industrial-dots {
+  background-size: 20px 20px;
+  background-image: radial-gradient(rgba(0, 0, 0, 0.06) 1px, transparent 1px);
+}
+
+/* Shimmer animation */
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.animate-shimmer::after {
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  transform: translateX(-100%);
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0,
+    rgba(255, 255, 255, 0.3) 20%,
+    rgba(255, 255, 255, 0.6) 60%,
+    rgba(255, 255, 255, 0)
+  );
+  animation: shimmer 2s infinite;
+  content: '';
 }
