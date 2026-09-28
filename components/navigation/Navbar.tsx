@@ -279,7 +279,7 @@ export const Navbar: React.FC = () => {
 
               {/* Language Switcher */}
               <div className="pt-3 border-t border-white/8">
-                <div className="text-[10px] font-mono text-[#5a6666] mb-2 uppercase tracking-wider">Language / ભાષા</div>
+                <div className="text-[10px] font-mono text-[#5a6666] mb-2 uppercase tracking-wider">{t.language} / ભાષા / भाषा</div>
                 <div className="grid grid-cols-3 gap-2">
                   {languages.map((l) => (
                     <button
@@ -299,15 +299,15 @@ export const Navbar: React.FC = () => {
 
               {/* Portal Shortcuts */}
               <div className="pt-3 border-t border-white/8">
-                <div className="text-[10px] font-mono text-[#5a6666] mb-2 uppercase tracking-wider">Quick Access</div>
+                <div className="text-[10px] font-mono text-[#5a6666] mb-2 uppercase tracking-wider">{t.accessViews}</div>
                 <div className="grid grid-cols-2 gap-2 text-xs font-mono">
                   <Link href="/portal/dashboard" onClick={() => setMenuOpen(false)} className="flex items-center gap-2 p-2.5 bg-white/4 border border-white/8 rounded-sm text-[#c8d0ce] hover:text-[#e7a45c] hover:bg-white/6 transition-all">
                     <span className="size-1.5 rounded-full bg-blue-400/70 shrink-0" />
-                    Buyer Portal
+                    {t.customerPortal}
                   </Link>
                   <Link href="/admin/dashboard" onClick={() => setMenuOpen(false)} className="flex items-center gap-2 p-2.5 bg-white/4 border border-white/8 rounded-sm text-[#c8d0ce] hover:text-[#e7a45c] hover:bg-white/6 transition-all">
                     <span className="size-1.5 rounded-full bg-emerald-400/70 shrink-0" />
-                    Admin CRM
+                    {t.adminDashboard}
                   </Link>
                 </div>
               </div>
@@ -319,7 +319,7 @@ export const Navbar: React.FC = () => {
                   onClick={() => setMenuOpen(false)}
                   className="flex w-full items-center justify-center gap-2 bg-[#e46e2e] hover:bg-[#f07d3e] py-3.5 text-xs font-bold uppercase tracking-[.12em] text-white shadow-lg rounded-sm transition-all"
                 >
-                  <span>Request a Quote</span>
+                  <span>{t.requestQuote}</span>
                   <ArrowUpRight size={14} />
                 </Link>
               </div>

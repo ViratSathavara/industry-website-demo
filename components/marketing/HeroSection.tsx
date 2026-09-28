@@ -4,8 +4,10 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight, ShieldCheck, Cpu, CheckCircle2, TrendingUp, Bell } from "lucide-react";
+import { useDemoState } from "@/lib/services/demo-state-context";
 
 export const HeroSection: React.FC = () => {
+  const { t } = useDemoState();
   const [activeComponentIdx, setActiveComponentIdx] = useState(0);
 
   const heroComponents = [
@@ -75,7 +77,7 @@ export const HeroSection: React.FC = () => {
             <div className="mb-6 flex flex-wrap items-center gap-3 text-[#e7a45c]">
               <span className="h-px w-10 bg-[#e7a45c]" />
               <span className="font-mono text-xs uppercase tracking-widest text-[#e7a45c]">
-                Industrial Water Motor Parts & Fluid Equipment · 01 / 05
+                {t.heroTag}
               </span>
               <span className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-0.5 border border-[#e7a45c]/30 text-[10px] font-mono text-[#e7a45c] bg-white/5">
                 <ShieldCheck size={12} />
@@ -84,11 +86,11 @@ export const HeroSection: React.FC = () => {
             </div>
 
             <h1 className="font-display text-[clamp(2.8rem,6vw,6.5rem)] leading-[.92] tracking-[-.04em] text-balance">
-              Your factory deserves more than a <em className="text-[#e7a45c]">phone number.</em>
+              {t.heroHeadline} <em className="text-[#e7a45c]">{t.heroHeadlineEm}</em>
             </h1>
 
             <p className="mt-6 max-w-2xl text-base leading-7 text-[#d2d1c9] md:text-lg">
-              Turn your industrial water motor parts, submersible pump assemblies, and factory capabilities into a digital sales engine that captures RFQs, prepares instant quotations, and manages orders 24/7.
+              {t.heroSubheadline}
             </p>
 
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
@@ -96,30 +98,30 @@ export const HeroSection: React.FC = () => {
                 href="/products"
                 className="group inline-flex items-center justify-center gap-3 bg-[#e46e2e] px-6 py-3.5 text-sm font-semibold text-[#fff5e9] transition-all hover:bg-[#f38b43] shadow-lg"
               >
-                Explore Digital Factory{" "}
+                {t.exploreFactory}{" "}
                 <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
               </Link>
               <Link
                 href="/request-quote"
                 className="inline-flex items-center justify-center gap-3 border border-white/30 px-6 py-3.5 text-sm font-semibold text-[#f4efe5] transition-colors hover:border-[#e7a45c] hover:text-[#e7a45c]"
               >
-                Request a Quote <ArrowUpRight size={16} />
+                {t.viewCatalog} <ArrowUpRight size={16} />
               </Link>
             </div>
 
             {/* Quick Metrics Bar */}
             <div className="mt-10 grid grid-cols-3 gap-4 pt-6 border-t border-white/10 font-mono text-xs text-[#aeb5b2]">
               <div>
-                <div className="text-xl font-bold text-[#f4efe5]">45,000+</div>
-                <div className="text-[11px] text-[#7e8989] mt-0.5">Motor Parts / Month</div>
+                <div className="text-xl font-bold text-[#f4efe5]">{t.heroStat1Value}</div>
+                <div className="text-[11px] text-[#7e8989] mt-0.5">{t.heroStat1Label}</div>
               </div>
               <div>
-                <div className="text-xl font-bold text-[#e7a45c]">&lt; 0.003mm</div>
-                <div className="text-[11px] text-[#7e8989] mt-0.5">Shaft Grinding TIR</div>
+                <div className="text-xl font-bold text-[#e7a45c]">{t.heroStat2Value}</div>
+                <div className="text-[11px] text-[#7e8989] mt-0.5">{t.heroStat2Label}</div>
               </div>
               <div>
-                <div className="text-xl font-bold text-[#f4efe5]">16 Bar</div>
-                <div className="text-[11px] text-[#7e8989] mt-0.5">Hydrostatic Proof Test</div>
+                <div className="text-xl font-bold text-[#f4efe5]">{t.heroStat3Value}</div>
+                <div className="text-[11px] text-[#7e8989] mt-0.5">{t.heroStat3Label}</div>
               </div>
             </div>
           </div>

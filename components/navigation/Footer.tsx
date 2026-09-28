@@ -11,6 +11,7 @@ import {
   ShieldCheck,
   ChevronUp
 } from "lucide-react";
+import { useDemoState } from "@/lib/services/demo-state-context";
 
 const footerLinks = {
   products: [
@@ -40,6 +41,7 @@ const footerLinks = {
 };
 
 export const Footer: React.FC = () => {
+  const { t } = useDemoState();
   return (
     <footer className="bg-[#171c1e] text-[#f4efe5] border-t border-white/8">
       {/* Main Footer Grid */}
@@ -58,7 +60,7 @@ export const Footer: React.FC = () => {
           </Link>
 
           <p className="text-xs leading-5 text-[#7e8989] mb-5 max-w-[240px]">
-            Precision-manufactured water motor components for submersible pumps, agricultural irrigation, and industrial fluid systems.
+            {t.footerTagline}
           </p>
 
           {/* Certifications badges */}
@@ -90,7 +92,7 @@ export const Footer: React.FC = () => {
 
         {/* Products Links */}
         <div>
-          <h3 className="text-[10px] font-mono uppercase tracking-[.18em] text-[#e7a45c] mb-4">Products</h3>
+          <h3 className="text-[10px] font-mono uppercase tracking-[.18em] text-[#e7a45c] mb-4">{t.footerProductsTitle}</h3>
           <ul className="space-y-2.5">
             {footerLinks.products.map((l) => (
               <li key={l.href}>
@@ -104,7 +106,7 @@ export const Footer: React.FC = () => {
 
         {/* Company Links */}
         <div>
-          <h3 className="text-[10px] font-mono uppercase tracking-[.18em] text-[#e7a45c] mb-4">Company</h3>
+          <h3 className="text-[10px] font-mono uppercase tracking-[.18em] text-[#e7a45c] mb-4">{t.footerCompanyTitle}</h3>
           <ul className="space-y-2.5">
             {footerLinks.company.map((l) => (
               <li key={l.href}>
@@ -118,7 +120,7 @@ export const Footer: React.FC = () => {
 
         {/* Portals & CTA */}
         <div>
-          <h3 className="text-[10px] font-mono uppercase tracking-[.18em] text-[#e7a45c] mb-4">Quick Access</h3>
+          <h3 className="text-[10px] font-mono uppercase tracking-[.18em] text-[#e7a45c] mb-4">{t.footerQuickAccessTitle}</h3>
           <ul className="space-y-2.5 mb-6">
             {footerLinks.portals.map((l) => (
               <li key={l.href}>
@@ -134,7 +136,7 @@ export const Footer: React.FC = () => {
             href="/request-quote"
             className="inline-flex items-center gap-2 bg-[#e46e2e] hover:bg-[#f07d3e] text-white px-4 py-2.5 text-xs font-bold uppercase tracking-wider rounded-sm transition-all shadow-lg shadow-[#e46e2e]/15 w-full justify-center"
           >
-            <span>Request a Quote</span>
+            <span>{t.requestQuote}</span>
             <ArrowUpRight size={13} />
           </Link>
         </div>
@@ -144,13 +146,13 @@ export const Footer: React.FC = () => {
       <div className="border-t border-white/8">
         <div className="mx-auto max-w-[1440px] px-4 md:px-8 lg:px-12 py-4 flex flex-col sm:flex-row items-center justify-between gap-3">
           <span className="text-[10px] font-mono uppercase tracking-[.12em] text-[#4a5555]">
-            © 2025 INDUSTRIA Motor Parts · Sanand GIDC, Gujarat · All rights reserved
+            {t.footerCopyright}
           </span>
           <a
             href="#top"
             className="inline-flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-wider text-[#4a5555] hover:text-[#e7a45c] transition-colors"
           >
-            Back to top
+            {t.backToTop}
             <ChevronUp size={12} />
           </a>
         </div>
