@@ -1,31 +1,16 @@
 "use client";
 
 import React from "react";
-import { Quote, UserCheck, ShieldCheck } from "lucide-react";
+import { Quote } from "lucide-react";
+import { useDemoState } from "@/lib/services/demo-state-context";
 
 export const TestimonialsTrustSection: React.FC = () => {
+  const { t } = useDemoState();
+
   const testimonials = [
-    {
-      role: "Procurement Manager",
-      context: "Sample OEM Buyer Journey",
-      companyType: "Submersible Pump Manufacturing Plant (Rajkot)",
-      quote: "Before this digital catalogue, getting technical drawings and batch tolerance certificates took 3 to 4 days of phone calls. Now our engineers can verify rotor shaft runout and CAD models directly and raise an RFQ in 5 minutes.",
-      impact: "70% Faster RFQ Sourcing Cycle"
-    },
-    {
-      role: "Dealer & Distribution Head",
-      context: "Illustrative Dealer Network Workflow",
-      companyType: "Regional Agricultural Machinery Supply Network (Mehsana)",
-      quote: "Our retail dealers can check real-time availability of bronze impellers and rewindable stators, track dispatch status, and download ISI test certificates straight from the customer portal without constantly chasing sales managers.",
-      impact: "Zero Dispatch Communication Delays"
-    },
-    {
-      role: "Factory Managing Director",
-      context: "Demo Factory Owner Persona",
-      companyType: "Precision Motor Components Manufacturing (Sanand GIDC)",
-      quote: "Having all our inquiries, CAD drawings, quotations, and CNC production stages connected into one digital system gave us complete transparency over where our business enquiries were coming from.",
-      impact: "100% Pipeline Visibility"
-    }
+    { role: t.t1Role, context: t.t1Context, companyType: t.t1Company, quote: t.t1Quote, impact: t.t1Impact },
+    { role: t.t2Role, context: t.t2Context, companyType: t.t2Company, quote: t.t2Quote, impact: t.t2Impact },
+    { role: t.t3Role, context: t.t3Context, companyType: t.t3Company, quote: t.t3Quote, impact: t.t3Impact },
   ];
 
   return (
@@ -37,26 +22,26 @@ export const TestimonialsTrustSection: React.FC = () => {
             <div className="flex items-center gap-2 mb-3">
               <span className="h-px w-8 bg-[#bb5b2c]" />
               <span className="font-mono text-xs uppercase tracking-widest text-[#bb5b2c]">
-                Illustrative Journeys / 10
+                {t.testimonialsLabel}
               </span>
             </div>
             <h2 className="font-display text-[clamp(2.6rem,5vw,5rem)] leading-[.92] tracking-[-.04em] text-[#20272b]">
-              Demonstrating the <em className="text-[#bb5b2c]">human impact.</em>
+              {t.testimonialsTitle} <em className="text-[#bb5b2c]">{t.testimonialsTitleEm}</em>
             </h2>
           </div>
           <div className="max-w-md">
             <span className="inline-block px-3 py-1 bg-white border border-[#cfc5b5] text-[11px] font-mono text-[#bb5b2c] font-bold mb-2">
-              DEMO DATA — Anonymous Illustrative Personas
+              {t.testimonialsDemoBadge}
             </span>
             <p className="text-xs sm:text-sm text-[#687173] leading-relaxed">
-              How a digital factory platform transforms day-to-day operations for procurement buyers, distribution partners, and manufacturing executives.
+              {t.testimonialsSubtitle}
             </p>
           </div>
         </div>
 
         {/* 3 Personas Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {testimonials.map((t, idx) => (
+          {testimonials.map((item, idx) => (
             <div
               key={idx}
               className="p-8 bg-[#eee8dd] border border-[#cfc5b5] flex flex-col justify-between space-y-6 hover:border-[#bb5b2c] transition-colors relative"
@@ -64,19 +49,19 @@ export const TestimonialsTrustSection: React.FC = () => {
               <div className="space-y-4">
                 <Quote size={28} className="text-[#bb5b2c]/40" />
                 <p className="text-sm text-[#20272b] leading-relaxed italic">
-                  &quot;{t.quote}&quot;
+                  &quot;{item.quote}&quot;
                 </p>
               </div>
 
               <div className="pt-4 border-t border-[#cfc5b5] space-y-2">
                 <div className="flex items-center justify-between">
-                  <div className="font-bold text-sm text-[#20272b] font-heading">{t.role}</div>
+                  <div className="font-bold text-sm text-[#20272b] font-heading">{item.role}</div>
                   <span className="text-[10px] font-mono font-bold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded">
-                    {t.impact}
+                    {item.impact}
                   </span>
                 </div>
-                <div className="text-[11px] font-mono text-[#bb5b2c] font-semibold">{t.context}</div>
-                <div className="text-[11px] text-[#687173] font-mono">{t.companyType}</div>
+                <div className="text-[11px] font-mono text-[#bb5b2c] font-semibold">{item.context}</div>
+                <div className="text-[11px] text-[#687173] font-mono">{item.companyType}</div>
               </div>
             </div>
           ))}

@@ -1,54 +1,21 @@
 "use client";
 
 import React from "react";
+import { useDemoState } from "@/lib/services/demo-state-context";
 
 export const GrowthStrip: React.FC = () => {
+  const { t } = useDemoState();
+
   const steps = [
-    {
-      num: "01",
-      title: "Offline Shop",
-      desc: "Manual calls, WhatsApp threads & loose paper job cards."
-    },
-    {
-      num: "02",
-      title: "Digital Specs",
-      desc: "Searchable 3D CAD models, alloy grades & ISO standards."
-    },
-    {
-      num: "03",
-      title: "OEM Discovery",
-      desc: "Found by Tier-1 aerospace & automotive buyers 24/7."
-    },
-    {
-      num: "04",
-      title: "CAD Inbound",
-      desc: "Direct STEP, IGES & DWG drawing feasibility intake."
-    },
-    {
-      num: "05",
-      title: "6-Step RFQ",
-      desc: "Structured batch tiers, delivery dates & tolerances."
-    },
-    {
-      num: "06",
-      title: "2-Hour Quote",
-      desc: "Automated CAM toolpath feasibility & CPQ cost breakdown."
-    },
-    {
-      num: "07",
-      title: "Buyer Portal",
-      desc: "Live CNC spindle telemetry, order status & mill certs."
-    },
-    {
-      num: "08",
-      title: "Zeiss Metrology",
-      desc: "Sub-micron CMM inspection logs & EN 10204 3.1 MTCs."
-    },
-    {
-      num: "09",
-      title: "OEM Contracts",
-      desc: "High-margin recurring annual framework call-offs."
-    }
+    { num: "01", title: t.step01Title, desc: t.step01Desc },
+    { num: "02", title: t.step02Title, desc: t.step02Desc },
+    { num: "03", title: t.step03Title, desc: t.step03Desc },
+    { num: "04", title: t.step04Title, desc: t.step04Desc },
+    { num: "05", title: t.step05Title, desc: t.step05Desc },
+    { num: "06", title: t.step06Title, desc: t.step06Desc },
+    { num: "07", title: t.step07Title, desc: t.step07Desc },
+    { num: "08", title: t.step08Title, desc: t.step08Desc },
+    { num: "09", title: t.step09Title, desc: t.step09Desc },
   ];
 
   return (
@@ -56,14 +23,15 @@ export const GrowthStrip: React.FC = () => {
       <div className="mx-auto max-w-[1440px] px-5 py-8 md:px-10 lg:px-14 border-b border-[#d7d0c5]">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
-            <span className="eyebrow text-[#bb5b2c]">Digital Transformation Trajectory</span>
+            <span className="text-[11px] font-mono uppercase tracking-widest text-[#bb5b2c]">
+              {t.growthStripLabel}
+            </span>
             <h2 className="mt-2 font-display text-2xl sm:text-3xl text-[#20272b]">
-              From Traditional Machine Shop to <em className="text-[#bb5b2c]">Connected Digital Enterprise.</em>
+              {t.growthStripHeadline}{" "}
+              <em className="text-[#bb5b2c]">{t.growthStripHeadlineEm}</em>
             </h2>
           </div>
-          <p className="text-xs text-[#667073] max-w-md">
-            The 9 sequential milestones that turn offline shop-floor friction into automated Tier-1 procurement revenue.
-          </p>
+          <p className="text-xs text-[#667073] max-w-md">{t.growthStripDesc}</p>
         </div>
       </div>
 

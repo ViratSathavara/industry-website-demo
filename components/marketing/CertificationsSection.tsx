@@ -3,37 +3,16 @@
 import React from "react";
 import Link from "next/link";
 import { ShieldCheck, Award, CheckCircle2, FileCheck, Layers, ArrowUpRight } from "lucide-react";
+import { useDemoState } from "@/lib/services/demo-state-context";
 
 export const CertificationsSection: React.FC = () => {
+  const { t } = useDemoState();
+
   const certs = [
-    {
-      title: "ISO 9001:2015 Quality Management",
-      category: "Quality Assurance System",
-      description: "Certified manufacturing procedures covering precision CNC machining, stator coil winding, dynamic balancing, and assembly inspection.",
-      badge: "ISO Standard",
-      icon: ShieldCheck
-    },
-    {
-      title: "ISI / BIS Water Motor Standards",
-      category: "Motor Efficiency & Safety",
-      description: "Conforming to Indian Standard specifications for deep-well submersible pumps, openwell units, and agricultural monoblock motors.",
-      badge: "National Standard",
-      icon: Award
-    },
-    {
-      title: "EN 10204 Type 3.1 Traceability",
-      category: "Raw Material Integrity",
-      description: "Every steel billet, bronze ingot, and CRGO electrical coil comes with certified chemical spectrometer and tensile mechanical test data.",
-      badge: "Material Traceability",
-      icon: Layers
-    },
-    {
-      title: "ISO 1940 Grade G1.0 Balancing",
-      category: "Rotational Dynamics",
-      description: "Zero-vibration high-speed rotational verification on automated two-plane Schenck balancing machines up to 24,000 RPM.",
-      badge: "Dynamic Balancing",
-      icon: FileCheck
-    }
+    { title: t.cert1Title, category: t.cert1Cat, description: t.cert1Desc, badge: t.cert1Badge, icon: ShieldCheck },
+    { title: t.cert2Title, category: t.cert2Cat, description: t.cert2Desc, badge: t.cert2Badge, icon: Award },
+    { title: t.cert3Title, category: t.cert3Cat, description: t.cert3Desc, badge: t.cert3Badge, icon: Layers },
+    { title: t.cert4Title, category: t.cert4Cat, description: t.cert4Desc, badge: t.cert4Badge, icon: FileCheck },
   ];
 
   return (
@@ -45,15 +24,15 @@ export const CertificationsSection: React.FC = () => {
             <div className="flex items-center gap-2 mb-3">
               <span className="h-px w-8 bg-[#bb5b2c]" />
               <span className="font-mono text-xs uppercase tracking-widest text-[#bb5b2c]">
-                Quality Assurance & Standards / 08
+                {t.certsLabel}
               </span>
             </div>
             <h2 className="font-display text-[clamp(2.6rem,5vw,5rem)] leading-[.92] tracking-[-.04em] text-[#20272b]">
-              Zero defect <em className="text-[#bb5b2c]">metrology standards.</em>
+              {t.certsTitle} <em className="text-[#bb5b2c]">{t.certsTitleEm}</em>
             </h2>
           </div>
           <p className="max-w-md text-xs sm:text-sm text-[#687173] leading-relaxed">
-            Strict calibration protocols, CMM verification, and hydrostatic pressure testing ensuring that every component delivered operates reliably under extreme conditions.
+            {t.certsSubtitle}
           </p>
         </div>
 
@@ -85,7 +64,7 @@ export const CertificationsSection: React.FC = () => {
                 </div>
 
                 <div className="pt-3 border-t border-[#cfc5b5] text-[11px] font-mono text-[#bb5b2c] flex items-center justify-between">
-                  <span>Inspection Ready</span>
+                  <span>{t.certsInspReady}</span>
                   <CheckCircle2 size={13} />
                 </div>
               </div>
@@ -99,7 +78,7 @@ export const CertificationsSection: React.FC = () => {
             href="/certifications"
             className="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-[#bb5b2c] hover:underline"
           >
-            <span>View Full Quality Testing Protocols & CMM Laboratory</span>
+            <span>{t.certsViewLink}</span>
             <ArrowUpRight size={13} />
           </Link>
         </div>
